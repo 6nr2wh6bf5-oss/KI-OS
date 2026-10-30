@@ -1,22 +1,29 @@
 # Profil
 
-> Wird im Profil-Interview gefüllt.
+> Stand: 2026-10-30, aus Profil-Interview. Offene Punkte mit [offen] markiert.
 
 ## Rolle
-- Brandschutzexperte VKF, Schweiz
+- Brandschutzexperte VKF, angestellt in einem Ingenieurbüro (Schweiz)
+- Qualitätssicherungsstufen (QSS) 1 bis 3
 
 ## Leistungen
-- [offen]
+- Brandschutzkonzepte
+- Abnahmen
+- Begehungen
+- Beratung
+- (keine Schulungen)
 
 ## Kunden / Auftraggeber (Typen)
-- [offen]
+- Architekten
+- Bauherren: privat sowie öffentliche Hand (Bund, Kantone)
 
-## Kantone / Behörden, mit denen ich häufig arbeite
-- [offen]
+## Tätigkeitsgebiet
+- Ganze Schweiz. Kantonale Umsetzung und Vollzugspraxis der VKF-Vorschriften unterscheiden sich; bei Fragen immer den Kanton klären.
 
 ## Schreibstil
 - Rational, klar strukturiert, Ergebnis zuerst
-- [weitere Merkmale offen]
+- Du/Sie in Mails: [offen]
+- Feste Formulierungen / Vorlagen: [offen]
 
 ## Häufige Aufgaben (Kandidaten für Skills)
 - [offen]
