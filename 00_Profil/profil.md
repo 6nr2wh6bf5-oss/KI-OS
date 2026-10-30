@@ -26,4 +26,6 @@
 - Feste Formulierungen / Vorlagen: [offen]
 
 ## Häufige Aufgaben (Kandidaten für Skills)
-- [offen]
+Grösster Zeitaufwand pro Woche:
+1. E-Mail-Beantwortung → Skill `mail-entwurf`
+2. Technische Berichte: Zustandsanalysen, Brandschutzkonzepte → Skill `brandschutz-bericht`
