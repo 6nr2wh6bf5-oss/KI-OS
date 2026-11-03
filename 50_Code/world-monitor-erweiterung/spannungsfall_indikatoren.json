@@ -51,7 +51,7 @@
    },
    "news": {
     "suche": [
-     "Verteidigungshaushalt Bundeswehr Milliarden"
+     "Verteidigungshaushalt OR Wehretat OR \"Sondervermögen Bundeswehr\""
     ],
     "muster": [
      "verteidigungshaushalt",
@@ -87,7 +87,7 @@
    },
    "news": {
     "suche": [
-     "NATO Fähigkeitsziele Aufrüstung Europa"
+     "\"Fünf-Prozent-Ziel\" OR \"NATO-Ziel\" OR Fähigkeitsziele OR \"NATO-Gipfel\""
     ],
     "muster": [
      "nato-ziel",
@@ -164,7 +164,7 @@
    },
    "news": {
     "suche": [
-     "Rüstungsindustrie Munition Produktion Deutschland"
+     "Rüstungsindustrie OR Munitionsproduktion OR Kriegswirtschaft"
     ],
     "muster": [
      "munitionsproduktion",
@@ -200,8 +200,7 @@
    },
    "news": {
     "suche": [
-     "Truppenverlegung Deutschland NATO Konvoi",
-     "Panzerbrigade 45 Litauen"
+     "Truppenverlegung OR Militärkonvoi OR \"Panzerbrigade 45\""
     ],
     "muster": [
      "truppenverlegung",
@@ -238,8 +237,8 @@
    },
    "news": {
     "suche": [
-     "Operationsplan Deutschland",
-     "Territoriales Führungskommando Übung"
+     "\"Operationsplan Deutschland\" OR \"Territoriales Führungskommando\"",
+     "Heimatschutz Bundeswehr"
     ],
     "muster": [
      "operationsplan deutschland",
@@ -275,8 +274,7 @@
    },
    "news": {
     "suche": [
-     "Schutzräume Bunker Zivilschutz Deutschland",
-     "BBK Zivilschutz Vorsorge"
+     "Zivilschutz OR Schutzraum OR Schutzräume OR Bevölkerungsschutz"
     ],
     "muster": [
      "schutzraum",
@@ -316,8 +314,7 @@
    },
    "news": {
     "suche": [
-     "Sicherstellungsgesetz",
-     "Gesamtverteidigung Gesetz Bundestag"
+     "Sicherstellungsgesetz OR Gesamtverteidigung OR Wirtschaftssicherstellungsgesetz"
     ],
     "muster": [
      "sicherstellungsgesetz",
@@ -354,8 +351,9 @@
    },
    "news": {
     "suche": [
-     "Krankenhäuser Kriegsfall Vorbereitung",
-     "KRITIS-Dachgesetz"
+     "Krankenhäuser Kriegsfall",
+     "KRITIS-Dachgesetz",
+     "Gesundheitssicherstellungsgesetz"
     ],
     "muster": [
      "kriegsfall",
@@ -554,13 +552,15 @@
    },
    "news": {
     "suche": [
-     "Russland Atomwaffen Drohung",
-     "Nuklearwaffen Belarus Übung"
+     "Atomwaffen Russland",
+     "Nuklearwaffen Belarus",
+     "Putin Atomwaffen"
     ],
     "muster": [
      "atomwaffe",
      "nuklear",
-     "atomar"
+     "atomar",
+     "atomschl"
     ],
     "ausschluss": [
      "iran",
@@ -876,5 +876,6 @@
     ]
    }
   }
- ]
+ ],
+ "_hinweis_suche": "Google-News-Suchen als ODER-Verknuepfung kurzer Begriffe (mehrere UND-Begriffe liefern oft 0 Treffer). Angepasst 2026-11-03 nach Live-Test."
 }
