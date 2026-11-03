@@ -1,0 +1,880 @@
+{
+ "_hinweis": "Indikatorenkatalog Themenfeld AUFRUESTUNG DE/NATO und SPANNUNGSFALL. 'basis' = manuelle Bewertung (Stufe 0-4) mit Stand; 'news' = automatische Ergaenzung aus Meldungen. Effektive Stufe = max(basis, news). Formelle Auslöser (Kategorie 'ausloeser') werden NUR manuell gesetzt; Meldungen erzeugen dort nur einen Pruefhinweis.",
+ "bewertet_am": "2026-11-03",
+ "stufen": {
+  "0": "ruhend / Normalzustand",
+  "1": "beobachten",
+  "2": "deutlich erhöht, strukturell",
+  "3": "angespannt, akute Vorbereitung oder Vorfälle",
+  "4": "kritisch / formell ausgelöst"
+ },
+ "kategorien": {
+  "aufruestung": {
+   "name": "Aufrüstung und Streitkräfte",
+   "index": "aufruestung",
+   "gewicht": 1
+  },
+  "gesamtverteidigung": {
+   "name": "Zivile Verteidigung und Vorsorge",
+   "index": "aufruestung",
+   "gewicht": 1
+  },
+  "bedrohung": {
+   "name": "Akute Bedrohung und hybride Angriffe",
+   "index": "eskalation",
+   "gewicht": 1
+  },
+  "ausloeser": {
+   "name": "Formelle Auslöser (Recht/Bündnis)",
+   "index": "eskalation",
+   "gewicht": 1
+  }
+ },
+ "indikatoren": [
+  {
+   "id": "A1",
+   "kategorie": "aufruestung",
+   "name": "Verteidigungsausgaben Deutschland",
+   "gewicht": 2,
+   "kriterien": [
+    "< 1,5 % BIP",
+    "1,5-2 % BIP",
+    "2-3 % BIP",
+    "3-3,5 % BIP oder sprunghafter Anstieg",
+    "> 3,5 % BIP oder Kriegsnachtragshaushalt"
+   ],
+   "basis": {
+    "stufe": 3,
+    "stand": "2026-11-03",
+    "text": "Entwurf Haushalt 2027: 109,7 Mrd. EUR Kernhaushalt (+27 Mrd.) plus ca. 30 Mrd. EUR Sondervermoegen, total ca. 140 Mrd. EUR; Verabschiedung Ende November 2026 geplant.",
+    "quelle": "https://www.leinetal24.de/wirtschaft/die-bundeswehr-rekord-etat-2027-jeder-fuenfte-euro-ist-fuer-zr-94484124.html"
+   },
+   "news": {
+    "suche": [
+     "Verteidigungshaushalt Bundeswehr Milliarden"
+    ],
+    "muster": [
+     "verteidigungshaushalt",
+     "wehretat",
+     "sondervermoegen bundeswehr",
+     "nachtragshaushalt verteidigung"
+    ],
+    "schwellen": [
+     99,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "A2",
+   "kategorie": "aufruestung",
+   "name": "NATO-Ziele und Bündnisplanung",
+   "gewicht": 1,
+   "kriterien": [
+    "kein Ziel",
+    "2 %-Ziel",
+    "erhöhte Ziele beschlossen",
+    "Ziele vorgezogen / Fähigkeitsluecken akut",
+    "Bündnis in Kriegsplanung"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Gipfel Den Haag (Juni 2025): Ziel 5 % BIP bis 2035 (3,5 % Kernverteidigung + 1,5 % Infrastruktur/Resilienz).",
+    "quelle": "NATO Den Haag Gipfelerklaerung 2025"
+   },
+   "news": {
+    "suche": [
+     "NATO Fähigkeitsziele Aufrüstung Europa"
+    ],
+    "muster": [
+     "nato-ziel",
+     "fuenf-prozent-ziel",
+     "faehigkeitsziele",
+     "nato-gipfel"
+    ],
+    "schwellen": [
+     99,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "A3",
+   "kategorie": "aufruestung",
+   "name": "Personal, Wehrdienst, Wehrpflicht",
+   "gewicht": 2,
+   "kriterien": [
+    "Freiwilligenarmee ohne Erfassung",
+    "Erfassung/Fragebogen",
+    "Pflichtmusterung, Aufwuchs beschlossen",
+    "Bedarfswehrpflicht beschlossen",
+    "Wehrpflicht aktiviert / Einberufungen"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Wehrdienst-Modernisierungsgesetz vom Bundestag am 05.12.2025 beschlossen: Fragebogen für Männer ab Jahrgang 2008, Pflichtmusterung schrittweise; Bedarfswehrpflicht nur durch separaten Bundestagsbeschluss. Inkrafttreten und Musterungsbeginn verifizieren.",
+    "quelle": "https://www.beck-aktuell.de/heute-im-recht/rechtspolitik-gesetzgebung/bundestag-gesetz-modernisierung-wehrdienst-2025-12-05"
+   },
+   "news": {
+    "suche": [
+     "Bedarfswehrpflicht",
+     "Wehrpflicht Musterung Bundeswehr"
+    ],
+    "muster": [
+     "bedarfswehrpflicht",
+     "wehrpflicht",
+     "musterung",
+     "einberufung"
+    ],
+    "ausschluss": [
+     "schweiz",
+     "oesterreich"
+    ],
+    "schwellen": [
+     15,
+     40,
+     80,
+     150
+    ]
+   }
+  },
+  {
+   "id": "A4",
+   "kategorie": "aufruestung",
+   "name": "Rüstungsproduktion und Beschaffung",
+   "gewicht": 1,
+   "kriterien": [
+    "normal",
+    "Ausbau angekuendigt",
+    "Kapazitätsausbau laeuft (Munition, Luftverteidigung)",
+    "Kriegswirtschaftliche Massnahmen (Vorrang, Lenkung)",
+    "Wirtschaftssicherstellung aktiviert"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Kapazitätsausbau Munition/Luftverteidigung, beschleunigte Beschaffung; keine Lenkungsmassnahmen nach WiSiG bekannt.",
+    "quelle": "eigene Einschaetzung, zu belegen"
+   },
+   "news": {
+    "suche": [
+     "Rüstungsindustrie Munition Produktion Deutschland"
+    ],
+    "muster": [
+     "munitionsproduktion",
+     "ruestungsindustrie",
+     "kriegswirtschaft",
+     "beschaffungsbeschleunigung"
+    ],
+    "schwellen": [
+     99,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "A5",
+   "kategorie": "aufruestung",
+   "name": "Vorne-Präsenz und Truppenverlegungen",
+   "gewicht": 1,
+   "kriterien": [
+    "keine",
+    "Rotationen",
+    "dauerhafte Stationierung (Brigade Litauen)",
+    "grosse Verlegungen über DE (Drehscheibe)",
+    "Aufmarsch / Kriegsverlegung"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Panzerbrigade 45 in Litauen im Aufbau (volle Einsatzbereitschaft 2027 geplant).",
+    "quelle": "BMVg"
+   },
+   "news": {
+    "suche": [
+     "Truppenverlegung Deutschland NATO Konvoi",
+     "Panzerbrigade 45 Litauen"
+    ],
+    "muster": [
+     "truppenverlegung",
+     "verlegung",
+     "militaerkonvoi",
+     "panzerbrigade 45",
+     "drehscheibe deutschland"
+    ],
+    "schwellen": [
+     6,
+     15,
+     30,
+     60
+    ]
+   }
+  },
+  {
+   "id": "B1",
+   "kategorie": "gesamtverteidigung",
+   "name": "Operationsplan Deutschland / Drehscheibe",
+   "gewicht": 2,
+   "kriterien": [
+    "kein Plan",
+    "Planung",
+    "Plan in Kraft, Übungen mit Zivilbehoerden",
+    "Umsetzung angeordnet (Teile)",
+    "vollständig aktiviert"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "OPLAN DEU seit 2024 in Kraft und fortgeschrieben; Übungen mit Ländern, Kommunen, Wirtschaft (z.B. Red Storm, Hamburg 2025).",
+    "quelle": "BMVg / Territoriales Fuehrungskommando"
+   },
+   "news": {
+    "suche": [
+     "Operationsplan Deutschland",
+     "Territoriales Führungskommando Übung"
+    ],
+    "muster": [
+     "operationsplan deutschland",
+     "oplan",
+     "territoriales fuehrungskommando",
+     "heimatschutz"
+    ],
+    "schwellen": [
+     5,
+     12,
+     25,
+     50
+    ]
+   }
+  },
+  {
+   "id": "B2",
+   "kategorie": "gesamtverteidigung",
+   "name": "Zivilschutz, Schutzräume, Warnung",
+   "gewicht": 2,
+   "kriterien": [
+    "ruhend",
+    "Konzepte/Bestandsaufnahme",
+    "Programme finanziert (Schutzräume, Sirenen)",
+    "Schutzräume aktiviert, Bevölkerungsaufrufe",
+    "Bevölkerung angewiesen (Schutz suchen, Evakuierung)"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Schutzraumkonzept/Bunkerkataster in Arbeit, Ausbau Sirenen und Cell Broadcast, Erhöhung Mittel BBK. Konkrete Finanzzahlen verifizieren.",
+    "quelle": "BBK"
+   },
+   "news": {
+    "suche": [
+     "Schutzräume Bunker Zivilschutz Deutschland",
+     "BBK Zivilschutz Vorsorge"
+    ],
+    "muster": [
+     "schutzraum",
+     "bunker",
+     "zivilschutz",
+     "bevoelkerungsschutz",
+     "sirene"
+    ],
+    "ausschluss": [
+     "schweiz"
+    ],
+    "schwellen": [
+     10,
+     25,
+     50,
+     100
+    ]
+   }
+  },
+  {
+   "id": "B3",
+   "kategorie": "gesamtverteidigung",
+   "name": "Sicherstellungs- und Vorsorgegesetze",
+   "gewicht": 2,
+   "kriterien": [
+    "ruhend",
+    "Novellierung in Arbeit",
+    "Novellen beschlossen / Vorsorgeteil genutzt",
+    "Anwendung angeordnet (Art. 80a GG Freigabe)",
+    "umfassend angewendet"
+   ],
+   "basis": {
+    "stufe": 1,
+    "stand": "2026-11-03",
+    "text": "WiSiG, VerkSiG, ArbSiG, ESVG, PTSG ruhen (Anwendung nach Art. 80a GG nur im Spannungs-/Verteidigungsfall). Modernisierung im Rahmen Gesamtverteidigung diskutiert; Gesetzgebungsstand verifizieren.",
+    "quelle": "Art. 80a GG; ESVG 2017"
+   },
+   "news": {
+    "suche": [
+     "Sicherstellungsgesetz",
+     "Gesamtverteidigung Gesetz Bundestag"
+    ],
+    "muster": [
+     "sicherstellungsgesetz",
+     "wirtschaftssicherstellung",
+     "verkehrssicherstellung",
+     "arbeitssicherstellung",
+     "gesamtverteidigung"
+    ],
+    "schwellen": [
+     4,
+     10,
+     20,
+     40
+    ]
+   }
+  },
+  {
+   "id": "B4",
+   "kategorie": "gesamtverteidigung",
+   "name": "Gesundheitswesen und KRITIS-Vorsorge",
+   "gewicht": 1,
+   "kriterien": [
+    "ruhend",
+    "Planung",
+    "Gesetz/Programme (Gesundheitssicherstellung, KRITIS-Dachgesetz)",
+    "Bettenfreihaltung / Reservepersonal",
+    "Kriegsmedizin angeordnet"
+   ],
+   "basis": {
+    "stufe": 1,
+    "stand": "2026-11-03",
+    "text": "Planungen für Bündnisfall (Verwundetenversorgung), Gesundheitssicherstellungsgesetz und KRITIS-Dachgesetz: Stand verifizieren.",
+    "quelle": "BMG / BMI"
+   },
+   "news": {
+    "suche": [
+     "Krankenhäuser Kriegsfall Vorbereitung",
+     "KRITIS-Dachgesetz"
+    ],
+    "muster": [
+     "kriegsfall",
+     "buendnisfall krankenhaus",
+     "gesundheitssicherstellung",
+     "kritis-dachgesetz",
+     "verwundete"
+    ],
+    "schwellen": [
+     4,
+     10,
+     20,
+     40
+    ]
+   }
+  },
+  {
+   "id": "C1",
+   "kategorie": "bedrohung",
+   "name": "Sabotage und hybride Angriffe in DE",
+   "gewicht": 3,
+   "kriterien": [
+    "keine",
+    "Einzelfälle",
+    "gehäuft, Behörden warnen",
+    "schwere Anschläge auf KRITIS / Behörden 'hoch'",
+    "koordinierte Angriffswelle"
+   ],
+   "basis": {
+    "stufe": 3,
+    "stand": "2026-11-03",
+    "text": "Aug. 2026: Drohne mit Sprengstoff auf Piste Flughafen Leipzig/Halle; BMI: Gefahr 'nicht mehr abstrakt', 'hoch'. Jan. 2026: Brandanschlag Stromnetz Berlin (linksextrem, ca. 4 Tage Ausfall). Täterschaft nicht immer staatlich.",
+    "quelle": "https://www.t-online.de/nachrichten/deutschland/id_101377642/wie-steht-es-um-die-sicherheitslage-in-deutschland-.html"
+   },
+   "news": {
+    "suche": [
+     "Sabotage Deutschland Bahn Bundeswehr",
+     "hybride Angriffe Deutschland",
+     "Spionage Russland festgenommen Deutschland"
+    ],
+    "muster": [
+     "sabotage",
+     "hybrid",
+     "anschlag",
+     "spionage",
+     "festgenommen"
+    ],
+    "ausschluss": [
+     "ukraine",
+     "film"
+    ],
+    "schwellen": [
+     8,
+     15,
+     30,
+     60
+    ]
+   }
+  },
+  {
+   "id": "C2",
+   "kategorie": "bedrohung",
+   "name": "Drohnen über Militär und KRITIS",
+   "gewicht": 2,
+   "kriterien": [
+    "keine",
+    "Einzelsichtungen",
+    "gehäufte Sichtungen",
+    "Flughafensperrungen / Abschussbefugnis genutzt",
+    "bewaffnete Drohnen im Einsatz gegen Ziele"
+   ],
+   "basis": {
+    "stufe": 3,
+    "stand": "2026-11-03",
+    "text": "Gehaeufte Sichtungen an Flughäfen und Kasernen; gemeinsames Drohnenabwehrzentrum Bund/Länder bei der Bundespolizei.",
+    "quelle": "https://www.nordkurier.de/politik/mehr-drohnensichtungen-an-deutschen-flughaefen-4769408"
+   },
+   "news": {
+    "suche": [
+     "Drohnen Flughafen gesperrt",
+     "Drohnen Kaserne Bundeswehr",
+     "Drohnensichtung Deutschland"
+    ],
+    "muster": [
+     "drohne"
+    ],
+    "ausschluss": [
+     "ukraine greift",
+     "lieferdrohne",
+     "hochzeit"
+    ],
+    "schwellen": [
+     8,
+     15,
+     30,
+     60
+    ]
+   }
+  },
+  {
+   "id": "C3",
+   "kategorie": "bedrohung",
+   "name": "Zwischenfälle NATO-Ostflanke",
+   "gewicht": 3,
+   "kriterien": [
+    "keine",
+    "Einzelfälle (Annäherungen)",
+    "Luftraumverletzungen, Kabelschäden Ostsee",
+    "Abschüsse / Art. 4-Konsultationen",
+    "Gefechte mit NATO-Kräften"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Wiederholte Luftraumverletzungen (u.a. Drohnen Polen, Kampfjets Estland 2025 mit Art. 4-Konsultationen), Zwischenfälle Ostsee. Aktuelle Häufung offen.",
+    "quelle": "https://www.stuttgarter-zeitung.de/politik/nach-vorfaellen-ueber-ostsee-nato-warnt-russland-vor-weiteren-luftraumverletzungen-79155751.html"
+   },
+   "news": {
+    "suche": [
+     "Luftraumverletzung Russland NATO",
+     "Ostsee Kabel beschädigt",
+     "NATO Kampfjets abgefangen Russland"
+    ],
+    "muster": [
+     "luftraum",
+     "abgefangen",
+     "kabel",
+     "abschuss",
+     "abgeschossen",
+     "ostsee"
+    ],
+    "schwellen": [
+     6,
+     12,
+     25,
+     50
+    ]
+   }
+  },
+  {
+   "id": "C4",
+   "kategorie": "bedrohung",
+   "name": "Russische Kräfte an der NATO-Grenze",
+   "gewicht": 2,
+   "kriterien": [
+    "normal",
+    "Übungen",
+    "Aufwuchs Militärbezirke, Grossübung",
+    "Konzentration / Mobilisierung in Belarus/Kaliningrad",
+    "Angriffsvorbereitung erkennbar"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Aufwuchs Militärbezirke Moskau/Leningrad; Nachrichtendienste (BND) halten Fähigkeit zu Angriff auf NATO gegen Ende des Jahrzehnts für möglich. Keine akute Angriffsvorbereitung bekannt.",
+    "quelle": "BND/MAD oeffentliche Lagebewertungen"
+   },
+   "news": {
+    "suche": [
+     "Russland Truppen Grenze Baltikum Belarus",
+     "Kaliningrad Militär Aufrüstung"
+    ],
+    "muster": [
+     "truppen",
+     "grenze",
+     "kaliningrad",
+     "belarus",
+     "mobilmachung",
+     "mobilisierung"
+    ],
+    "schwellen": [
+     8,
+     15,
+     30,
+     60
+    ]
+   }
+  },
+  {
+   "id": "C5",
+   "kategorie": "bedrohung",
+   "name": "Nukleare Drohungen und Doktrin",
+   "gewicht": 2,
+   "kriterien": [
+    "keine",
+    "Rhetorik",
+    "wiederholte Drohungen, Übungen Nuklearkraefte",
+    "Stationierung/Alarmierung verändert",
+    "Einsatz angedroht mit Frist / Einsatz"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Wiederkehrende Drohrhetorik, Nuklearwaffen in Belarus stationiert (seit 2023). Keine erhöhte Alarmbereitschaft bekannt.",
+    "quelle": "eigene Einschaetzung, zu belegen"
+   },
+   "news": {
+    "suche": [
+     "Russland Atomwaffen Drohung",
+     "Nuklearwaffen Belarus Übung"
+    ],
+    "muster": [
+     "atomwaffe",
+     "nuklear",
+     "atomar"
+    ],
+    "ausschluss": [
+     "iran",
+     "kraftwerk",
+     "akw"
+    ],
+    "schwellen": [
+     8,
+     15,
+     30,
+     60
+    ]
+   }
+  },
+  {
+   "id": "C6",
+   "kategorie": "bedrohung",
+   "name": "Cyberangriffe auf KRITIS DE",
+   "gewicht": 2,
+   "kriterien": [
+    "normal",
+    "erhöht",
+    "angespannt (BSI)",
+    "erfolgreiche Angriffe mit Versorgungsausfall",
+    "flaechige Ausfälle"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "BSI bewertet die Lage seit Jahren als angespannt bis kritisch; Einzelausfälle (Kommunen, Kliniken).",
+    "quelle": "BSI Lagebericht"
+   },
+   "news": {
+    "suche": [
+     "Cyberangriff kritische Infrastruktur Deutschland",
+     "Hackerangriff Stadtwerke Krankenhaus"
+    ],
+    "muster": [
+     "cyberangriff",
+     "hackerangriff",
+     "ransomware",
+     "ddos"
+    ],
+    "schwellen": [
+     10,
+     20,
+     40,
+     80
+    ]
+   }
+  },
+  {
+   "id": "C7",
+   "kategorie": "bedrohung",
+   "name": "Krieg in der Ukraine (Wirkung auf DE)",
+   "gewicht": 1,
+   "kriterien": [
+    "beendet",
+    "Waffenstillstand stabil",
+    "Krieg andauernd",
+    "Ausweitung / Angriffe auf Nachbarstaaten",
+    "direkte Konfrontation NATO-Russland"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-03",
+    "text": "Krieg dauert an, Verhandlungen ohne Durchbruch (Stand Okt. 2026, verifizieren).",
+    "quelle": "https://ukranews.com/en/amp/news/1165616-not-this-year-international-analysts-assess-chances-of-ending-war-in-ukraine"
+   },
+   "news": {
+    "suche": [
+     "Ukraine Waffenstillstand",
+     "Ukraine Krieg Eskalation NATO"
+    ],
+    "muster": [
+     "waffenstillstand",
+     "eskalation",
+     "nato"
+    ],
+    "schwellen": [
+     99,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "D1",
+   "kategorie": "ausloeser",
+   "name": "NATO Art. 4 Konsultationen",
+   "gewicht": 2,
+   "formell": true,
+   "gesamtstufe_min": 3,
+   "kriterien": [
+    "nicht aktiv",
+    "-",
+    "-",
+    "Konsultationen in den letzten 30 Tagen beantragt",
+    "-"
+   ],
+   "basis": {
+    "stufe": 0,
+    "stand": "2026-11-03",
+    "text": "Keine laufenden Konsultationen bekannt (zu verifizieren).",
+    "quelle": "NATO-Vertrag Art. 4"
+   },
+   "news": {
+    "suche": [
+     "NATO Artikel 4 Konsultationen"
+    ],
+    "muster": [
+     "artikel 4 beantragt",
+     "konsultationen nach artikel 4",
+     "article 4 consultations",
+     "artikel-4-konsultationen",
+     "beantragt konsultationen"
+    ],
+    "schwellen": [
+     2,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "D2",
+   "kategorie": "ausloeser",
+   "name": "NATO Bündnisfall Art. 5",
+   "gewicht": 3,
+   "formell": true,
+   "gesamtstufe_min": 5,
+   "kriterien": [
+    "nicht ausgerufen",
+    "-",
+    "-",
+    "-",
+    "ausgerufen"
+   ],
+   "basis": {
+    "stufe": 0,
+    "stand": "2026-11-03",
+    "text": "Nicht ausgerufen.",
+    "quelle": "NATO-Vertrag Art. 5"
+   },
+   "news": {
+    "suche": [
+     "NATO Bündnisfall Artikel 5"
+    ],
+    "muster": [
+     "buendnisfall ausgerufen",
+     "buendnisfall festgestellt",
+     "artikel 5 ausgeloest",
+     "artikel 5 aktiviert",
+     "invokes article 5",
+     "article 5 invoked"
+    ],
+    "schwellen": [
+     2,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "D3",
+   "kategorie": "ausloeser",
+   "name": "Bündnisklausel Art. 80a Abs. 3 GG",
+   "gewicht": 3,
+   "formell": true,
+   "gesamtstufe_min": 4,
+   "kriterien": [
+    "nicht genutzt",
+    "-",
+    "-",
+    "-",
+    "Rechtsvorschriften per Bündnisbeschluss anwendbar"
+   ],
+   "basis": {
+    "stufe": 0,
+    "stand": "2026-11-03",
+    "text": "Nicht genutzt.",
+    "quelle": "Art. 80a Abs. 3 GG"
+   },
+   "news": {
+    "suche": [
+     "Artikel 80a Grundgesetz"
+    ],
+    "muster": [
+     "80a absatz 3",
+     "80a abs. 3"
+    ],
+    "schwellen": [
+     2,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "D4",
+   "kategorie": "ausloeser",
+   "name": "Spannungsfall festgestellt (Art. 80a Abs. 1 GG)",
+   "gewicht": 3,
+   "formell": true,
+   "gesamtstufe_min": 5,
+   "kriterien": [
+    "nicht festgestellt",
+    "-",
+    "-",
+    "-",
+    "festgestellt (Bundestag, 2/3 der abgegebenen Stimmen)"
+   ],
+   "basis": {
+    "stufe": 0,
+    "stand": "2026-11-03",
+    "text": "Nicht festgestellt.",
+    "quelle": "Art. 80a Abs. 1 GG"
+   },
+   "news": {
+    "suche": [
+     "Spannungsfall Bundestag"
+    ],
+    "muster": [
+     "spannungsfall festgestellt",
+     "spannungsfall ausgerufen",
+     "feststellung des spannungsfalls",
+     "stellt spannungsfall fest"
+    ],
+    "schwellen": [
+     2,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "D5",
+   "kategorie": "ausloeser",
+   "name": "Verteidigungsfall (Art. 115a GG)",
+   "gewicht": 3,
+   "formell": true,
+   "gesamtstufe_min": 5,
+   "kriterien": [
+    "nicht festgestellt",
+    "-",
+    "-",
+    "-",
+    "festgestellt"
+   ],
+   "basis": {
+    "stufe": 0,
+    "stand": "2026-11-03",
+    "text": "Nicht festgestellt.",
+    "quelle": "Art. 115a GG"
+   },
+   "news": {
+    "suche": [
+     "Verteidigungsfall Deutschland"
+    ],
+    "muster": [
+     "verteidigungsfall festgestellt",
+     "verteidigungsfall ausgerufen",
+     "feststellung des verteidigungsfalls"
+    ],
+    "schwellen": [
+     2,
+     99,
+     99,
+     99
+    ]
+   }
+  },
+  {
+   "id": "D6",
+   "kategorie": "ausloeser",
+   "name": "Wehrpflicht aufgelebt / Reservisten einberufen",
+   "gewicht": 2,
+   "formell": true,
+   "gesamtstufe_min": 4,
+   "kriterien": [
+    "nein",
+    "-",
+    "Bedarfswehrpflicht beschlossen",
+    "Einberufungen Reservisten in grosser Zahl",
+    "Wehrpflicht nach § 2 WPflG aufgelebt"
+   ],
+   "basis": {
+    "stufe": 0,
+    "stand": "2026-11-03",
+    "text": "Nein. Wehrpflicht ausgesetzt, gilt nach § 2 WPflG erst im Spannungs- oder Verteidigungsfall.",
+    "quelle": "§ 2 WPflG"
+   },
+   "news": {
+    "suche": [
+     "Reservisten Einberufung Bundeswehr"
+    ],
+    "muster": [
+     "reservisten einberufen",
+     "einberufung der reservisten",
+     "wehrpflicht wieder in kraft",
+     "bedarfswehrpflicht beschlossen"
+    ],
+    "schwellen": [
+     2,
+     99,
+     99,
+     99
+    ]
+   }
+  }
+ ]
+}
