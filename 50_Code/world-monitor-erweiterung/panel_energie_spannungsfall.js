@@ -22,7 +22,9 @@
   .wmx tr.open+tr .det{display:block}
   .wmx .mut{color:#7d93a3;font-size:11px}.wmx .warn{color:#f0883e}
   .wmx svg{width:100%;height:46px;display:block}
-  .wmx ul{margin:4px 0 0;padding-left:16px}`;
+  .wmx ul{margin:4px 0 0;padding-left:16px}
+  .wmx td:nth-child(-n+2){text-align:left;white-space:normal}.wmx td[colspan]{text-align:left;white-space:normal}
+  @media (max-width:640px){.wmx td:nth-child(n+3){white-space:normal}.wmx td:nth-child(3){min-width:70px}}`;
   const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
 
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
