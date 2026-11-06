@@ -7,8 +7,8 @@ description: Beantwortet Fragen zu Schweizer Brandschutzvorschriften (VKF-Brands
 
 ## Ablauf
 1. Frage präzisieren: Kanton (kantonale Umsetzung/Praxis beachten), Nutzung, Gebäudekategorie (geringe Höhe / mittlere Höhe / Hochhaus), QSS-relevante Angaben. Fehlt etwas Entscheidendes, nachfragen oder Annahme offen nennen.
-2. Zuerst `10_Fachwissen/` durchsuchen (eigene Notizen haben Vorrang als Kontext).
-3. Dann Primärquellen recherchieren (Firecrawl): bsvonline.ch, vkf.ch. Nur Originaltexte als Beleg verwenden, keine Foren oder Sekundärquellen.
+2. Zuerst `10_Fachwissen/` durchsuchen (eigene Notizen haben Vorrang als Kontext; Verzeichnis: `10_Fachwissen/VKF/00_Index_VKF-Brandschutzvorschriften_2015.md`).
+3. Dann Primärquellen recherchieren (Firecrawl): bsvonline.ch, vkf.ch. Immer alle Ebenen prüfen: Norm 1-15, Richtlinie, **Erläuterungen, Arbeitshilfen, Merkblätter und FAQ** (https://www.bsvonline.ch/de/brandschutzvorschriften/faq). FAQ und Merkblätter oft entscheidend für die Auslegung. Nur Originaltexte als Beleg verwenden, keine Foren oder Sekundärquellen.
 4. Antwort im Format:
    - **Antwort** (1–3 Sätze)
    - **Fundstelle(n)**: Dokument, Ausgabe/Stand, Ziffer, Link
