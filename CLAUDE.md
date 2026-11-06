@@ -21,6 +21,7 @@ Dies ist mein KI-Betriebssystem. Lies diese Datei zu Beginn jeder Session.
 | `20_Projekte` | Laufende Projekte, pseudonymisiert |
 | `30_Vorlagen` | Berichts-, Mail- und Konzeptvorlagen |
 | `40_Routinen-Output` | Ergebnisse der automatischen Routinen (z.B. Wochen-Briefing) |
+| `50_Code` | Eigener Code (z.B. Module für den World Monitor), keine Schlüssel |
 | `90_Archiv` | Abgeschlossenes |
 | `.claude/skills` | Skills (wiederkehrende Abläufe) |
 

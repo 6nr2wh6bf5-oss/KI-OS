@@ -1,0 +1,9 @@
+{
+ "_hinweis": "Manuell gepflegte Werte ohne maschinenlesbare Quelle. Bei Änderung 'stand' anpassen.",
+ "gasstufe_de": {
+  "stufe": "Frühwarnstufe",
+  "stand": "2025-07-01",
+  "hinweis": "Alarmstufe am 01.07.2025 aufgehoben, seither Frühwarnstufe (Notfallplan Gas, EU-VO 2017/1938 Art. 11). Aktuellen Stand bei BNetzA prüfen.",
+  "quelle": "https://www.deutsche-handwerks-zeitung.de/?p=364934"
+ }
+}
