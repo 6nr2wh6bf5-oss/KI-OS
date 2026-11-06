@@ -36,3 +36,52 @@ Stand 2026-11-03. Paket offline getestet (Mock-Daten, Python 3, nur Standardbibl
 ## Nicht verifiziert (auf Server prüfen)
 - Endpunkt `api.energy-charts.info/frequency` (Feldname), BFE-CSV-URL Speicherseen (in config `bfe_speicherseen_csv` überschreibbar), AGSI-Feldnamen.
 - Google News RSS liefert max. ca. 100 Treffer je Suche; Schwellen nach 2-4 Wochen Betrieb kalibrieren.
+
+# Einbau PUSH-MELDUNGEN (ntfy) in den World Monitor
+
+Stand 2026-11-06. `push.py` neben `server.py` legen. Der ntfy-Kanal steht nur in der `config.json` auf dem Server, nie im Repo.
+
+## config.json
+```json
+"push": {"dienst": "ntfy", "ntfy_topic": "<langer Zufallsname>", "ntfy_server": "https://ntfy.sh",
+         "max_pro_tag": 3, "ruhe_von": 23, "ruhe_bis": 7}
+```
+Optional `"fruehwarn_min_dauer_min"` (Standard 60). Die Ruhezeit gilt in Serverzeit; der Server läuft auf Europe/Zurich.
+
+## server.py
+```python
+import push   # bei den anderen Modul-Importen, nach dem Setzen von WM_DATA_DIR/WM_CONFIG
+
+PUSH_SPERRE = asyncio.Lock()
+
+async def push_lauf(mit_fruehwarnung: bool):
+    """Push-Meldungen pruefen (push.py). Ein Fehler hier darf den Monitor nie stoeren."""
+    try:
+        anomalien = None
+        if mit_fruehwarnung:
+            an = await api_anomalien()
+            if "schnappschuesse" in an:   # sonst Ersatzantwort nach Fehler: nicht auswerten
+                anomalien = an["anomalien"]
+        async with PUSH_SPERRE:
+            neu = await asyncio.to_thread(push.lauf, anomalien, _modul_state(energie), _modul_state(spannungsfall))
+        for e in neu:
+            print(f"[monitor] Push gesendet: {e['titel']}", flush=True)
+    except Exception as e:
+        print(f"[monitor] Push: {e}", flush=True)
+```
+Aufrufe: `await push_lauf(True)` in `fw_loop` nach dem `try/except`, vor `FW_STATE["zyklus"] += 1`; `await push_lauf(False)` in `energie_spannung_loop` nach der `for`-Schleife, vor `n += 1`.
+
+Fehlerkorrektur in `fw_eval_series`: Die Finanz-Reihe braucht `"filter": []`. Fehlt das Feld, bricht `fw_filter` mit `KeyError: 'filter'` ab, sobald eine Finanz-Anomalie aktiv ist, und die ganze Frühwarnung bleibt leer.
+
+## Regel
+- Frühwarnung: nur Konvergenz (Stufe «stark», Aussagekraft «hoch», mehrere unabhängige Signale zum selben Konflikt), die mindestens 60 Minuten ununterbrochen besteht. Einzelne Anomalien melden sich nicht, auch nicht bei «stark» und «hoch».
+- Energie und Spannungsfall: Gesamtstufe ab 4 oder Sprung um mindestens 2 Stufen; formelle Auslöser D1-D6 immer, auch nachts.
+- Jede Meldung höchstens einmal in 7 Tagen. Unter Stufe 5 wartet eine Meldung die Ruhezeit ab und kommt danach, wenn sie noch gilt.
+- Dateien in `WM_DATA_DIR`: `push_log.json` (gesendet), `push_vorher.json` (Stufen und Beobachtungszeiten).
+
+## Rückrechnung
+`push.lauf(..., dry_run=True, log_datei=..., zustand_datei=...)` sendet nichts und lässt das echte Log unberührt.
+Stundenläufe 31.10.-06.11. (5,4 Tage, davon 25 Läufe ohne Frühwarn-Daten wegen des Fehlers oben): ursprüngliche Regel (jede Anomalie «stark» und «hoch», 24-h-Sperre) 8 Meldungen, rund 10 pro Woche; neue Regel 1-2 Meldungen, davon 0 aus den Modulen.
+
+## Prüfen
+Auf dem Server `python3 push.py` schickt die Testmeldung «World Monitor: Testmeldung». Neue Version setzen, Dienst neu starten, im Log nach `Push` suchen.
