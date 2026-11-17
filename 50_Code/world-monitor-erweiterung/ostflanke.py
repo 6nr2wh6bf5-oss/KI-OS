@@ -525,7 +525,14 @@ def bewerte(kat: dict, ereignisse: list[dict], tech_b: dict, hist: list[dict]) -
             if ind.get("akteure") and not set(ind["akteure"]) & set(e["wer"]):
                 continue
             treffer.append(e)
-        n_gew = round(sum(e["gewicht"] for e in treffer), 1)
+        # je Quelle hoechstens 3 Ereignisse pro Indikator (eine fleissige Behoerde soll den Wert nicht allein treiben)
+        je_quelle: dict = {}
+        gezaehlt = []
+        for e in treffer:
+            je_quelle[e["quelle_id"]] = je_quelle.get(e["quelle_id"], 0) + 1
+            if je_quelle[e["quelle_id"]] <= 3:
+                gezaehlt.append(e)
+        n_gew = round(sum(e["gewicht"] for e in gezaehlt), 1)
         ns = _stufe(n_gew, ind["schwellen"])
         mittel = _vorwochen(hist, ind["id"])
         anomalie = bool(mittel and n_gew >= max(2, ind["schwellen"][0]) and n_gew >= 2 * mittel)

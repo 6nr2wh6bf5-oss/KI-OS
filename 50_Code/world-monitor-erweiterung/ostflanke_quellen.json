@@ -1,154 +1,1654 @@
 {
  "_hinweis": "Quellen- und Indikatorenkatalog Modul OSTFLANKE (Baltikum, Suwalki-Korridor, Kaliningrad, Belarus, Ostsee). Nur offene Quellen. 'rss' = direkter Feed (falls auf dem Server erreichbar), sonst Ersatz 'gnews' (Google-News-Suche). Verlaesslichkeit: A = offizielle Stelle (eigene Angabe), B = serioese Medien/Analyse oder Eigenangabe RU/BY, C = Einzelquelle/OSINT unbestaetigt. 'region' = true: Meldung zaehlt nur mit Ortsbezug zur Region.",
  "stand": "2026-11-17",
- "bbox": {"sued": 52.0, "nord": 61.0, "west": 13.0, "ost": 33.0},
+ "bbox": {
+  "sued": 52.0,
+  "nord": 61.0,
+  "west": 13.0,
+  "ost": 33.0
+ },
  "quellen": [
-  {"id": "lt-kam", "name": "Verteidigungsministerium Litauen", "land": "LT", "typ": "offiziell", "verl": "A", "rss": "https://kam.lt/en/feed/", "gnews": "site:kam.lt", "lang": "en", "region": false},
-  {"id": "lt-kariuomene", "name": "Streitkraefte Litauen", "land": "LT", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:kariuomene.lt", "lang": "en", "region": false},
-  {"id": "lt-vsat", "name": "Grenzschutz Litauen (VSAT)", "land": "LT", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:vsat.lrv.lt", "lang": "en", "region": false},
-  {"id": "lv-mod", "name": "Verteidigungsministerium Lettland", "land": "LV", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:mod.gov.lv", "lang": "en", "region": false},
-  {"id": "lv-naf", "name": "Streitkraefte Lettland (NBS)", "land": "LV", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:mil.lv", "lang": "en", "region": false},
-  {"id": "lv-vrs", "name": "Grenzschutz Lettland", "land": "LV", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:rs.gov.lv", "lang": "en", "region": false},
-  {"id": "ee-mil", "name": "Streitkraefte Estland", "land": "EE", "typ": "offiziell", "verl": "A", "rss": "https://mil.ee/en/feed/", "gnews": "site:mil.ee", "lang": "en", "region": false},
-  {"id": "ee-mod", "name": "Verteidigungsministerium Estland", "land": "EE", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:kaitseministeerium.ee", "lang": "en", "region": false},
-  {"id": "pl-wp", "name": "Streitkraefte Polen (inkl. Operatives Kommando)", "land": "PL", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:wojsko-polskie.pl", "lang": "pl", "region": false},
-  {"id": "pl-mon", "name": "Verteidigungsministerium Polen", "land": "PL", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:gov.pl obrona narodowa", "lang": "pl", "region": false},
-  {"id": "pl-sg", "name": "Grenzschutz Polen", "land": "PL", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:strazgraniczna.pl", "lang": "pl", "region": false},
-  {"id": "fi-pv", "name": "Streitkraefte Finnland", "land": "FI", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:puolustusvoimat.fi", "lang": "en", "region": true},
-  {"id": "fi-raja", "name": "Grenzschutz Finnland", "land": "FI", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:raja.fi", "lang": "en", "region": false},
-  {"id": "se-fm", "name": "Streitkraefte Schweden", "land": "SE", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:forsvarsmakten.se", "lang": "en", "region": true},
-  {"id": "de-bw", "name": "Bundeswehr (u.a. Panzerbrigade 45 Litauen)", "land": "DE", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:bundeswehr.de Litauen OR Ostsee OR Baltikum OR Ostflanke", "lang": "de", "region": true},
-  {"id": "uk-mod", "name": "UK Verteidigungsministerium (gov.uk)", "land": "UK", "typ": "offiziell", "verl": "A", "rss": "https://www.gov.uk/search/news-and-communications.atom?organisations%5B%5D=ministry-of-defence", "gnews": "site:gov.uk Estonia OR Baltic OR \"Joint Expeditionary Force\"", "lang": "en", "region": true},
-  {"id": "uk-army", "name": "British Army (eFP Estland, Op CABRIT)", "land": "UK", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:army.mod.uk Estonia OR Baltic OR Poland", "lang": "en", "region": true},
-  {"id": "uk-rn", "name": "Royal Navy (Ostsee)", "land": "UK", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:royalnavy.mod.uk Baltic", "lang": "en", "region": true},
-  {"id": "uk-raf", "name": "Royal Air Force (Air Policing)", "land": "UK", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:raf.mod.uk Baltic OR Estonia OR Poland", "lang": "en", "region": true},
-  {"id": "jef", "name": "Joint Expeditionary Force (UK-gefuehrt, 10 Staaten)", "land": "UK", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "\"Joint Expeditionary Force\" Baltic OR Russia", "lang": "en", "region": false},
-  {"id": "us-eucom", "name": "US European Command", "land": "US", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:eucom.mil", "lang": "en", "region": true},
-  {"id": "us-army-eu", "name": "US Army Europe and Africa / V Corps", "land": "US", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:europeafrica.army.mil OR site:vcorps.army.mil", "lang": "en", "region": true},
-  {"id": "us-dvids", "name": "DVIDS (US-Militaermeldungen)", "land": "US", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:dvidshub.net Lithuania OR Latvia OR Estonia OR Poland", "lang": "en", "region": true},
-  {"id": "ca-reassurance", "name": "Kanada, Operation REASSURANCE (Brigade Lettland)", "land": "CA", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "\"Operation REASSURANCE\" OR \"Multinational Brigade Latvia\"", "lang": "en", "region": false},
-  {"id": "fr-lynx", "name": "Frankreich, Mission Lynx (Estland) / Aigle", "land": "FR", "typ": "offiziell", "verl": "B", "rss": null, "gnews": "\"mission Lynx\" Estonie OR \"armée française\" Estonie OR Lituanie", "lang": "fr", "region": false},
-  {"id": "nl-def", "name": "Niederlande (eFP Litauen)", "land": "NL", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:defensie.nl Litouwen OR Baltische", "lang": "nl", "region": false},
-  {"id": "nato", "name": "NATO Hauptquartier", "land": "NATO", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:nato.int", "lang": "en", "region": true},
-  {"id": "nato-shape", "name": "SHAPE", "land": "NATO", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:shape.nato.int", "lang": "en", "region": true},
-  {"id": "nato-aircom", "name": "NATO Allied Air Command (Air Policing, Alarmstarts)", "land": "NATO", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:ac.nato.int", "lang": "en", "region": false},
-  {"id": "nato-marcom", "name": "NATO Maritime Command (Baltic Sentry)", "land": "NATO", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:mc.nato.int OR \"Baltic Sentry\"", "lang": "en", "region": false},
-  {"id": "nato-mncne", "name": "Multinational Corps Northeast (Stettin)", "land": "NATO", "typ": "offiziell", "verl": "A", "rss": null, "gnews": "site:mncne.nato.int OR \"Multinational Corps Northeast\"", "lang": "en", "region": false},
-  {"id": "nato-sentry", "name": "Eastern Sentry / NATO-Ostflanke", "land": "NATO", "typ": "offiziell", "verl": "B", "rss": null, "gnews": "\"Eastern Sentry\" NATO", "lang": "en", "region": false},
-  {"id": "by-mod", "name": "Verteidigungsministerium Belarus (Eigenangabe)", "land": "BY", "typ": "gegenseite", "verl": "B", "rss": null, "gnews": "site:mil.by", "lang": "ru", "region": false},
-  {"id": "ru-mod", "name": "Verteidigungsministerium Russland (Eigenangabe)", "land": "RU", "typ": "gegenseite", "verl": "B", "rss": null, "gnews": "Baltic Fleet OR Kaliningrad OR \"Leningrad Military District\" exercise Russia defence ministry", "lang": "en", "region": false},
-  {"id": "isw", "name": "ISW (Institute for the Study of War)", "land": "US", "typ": "analyse", "verl": "B", "rss": null, "gnews": "site:understandingwar.org", "lang": "en", "region": true},
-  {"id": "osw", "name": "OSW Warschau", "land": "PL", "typ": "analyse", "verl": "B", "rss": null, "gnews": "site:osw.waw.pl", "lang": "en", "region": true},
-  {"id": "icds", "name": "ICDS Tallinn", "land": "EE", "typ": "analyse", "verl": "B", "rss": null, "gnews": "site:icds.ee", "lang": "en", "region": false},
-  {"id": "rusi", "name": "RUSI London", "land": "UK", "typ": "analyse", "verl": "B", "rss": null, "gnews": "site:rusi.org Baltic OR Kaliningrad OR Suwalki", "lang": "en", "region": false},
-  {"id": "defence24", "name": "Defence24", "land": "PL", "typ": "medien", "verl": "B", "rss": null, "gnews": "site:defence24.com", "lang": "en", "region": true},
-  {"id": "lrt", "name": "LRT (Litauen, oeffentlich)", "land": "LT", "typ": "medien", "verl": "B", "rss": "https://www.lrt.lt/en/news-in-english?rss", "gnews": null, "lang": "en", "region": true},
-  {"id": "err", "name": "ERR (Estland, oeffentlich)", "land": "EE", "typ": "medien", "verl": "B", "rss": "https://news.err.ee/rss", "gnews": null, "lang": "en", "region": true},
-  {"id": "lsm", "name": "LSM (Lettland, oeffentlich)", "land": "LV", "typ": "medien", "verl": "B", "rss": "https://eng.lsm.lv/rss/", "gnews": null, "lang": "en", "region": true}
+  {
+   "id": "lt-kam",
+   "name": "Verteidigungsministerium Litauen",
+   "land": "LT",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": "https://kam.lt/en/feed/",
+   "gnews": "site:kam.lt",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "lt-kariuomene",
+   "name": "Streitkraefte Litauen",
+   "land": "LT",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:kariuomene.lt",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "lt-vsat",
+   "name": "Grenzschutz Litauen (VSAT)",
+   "land": "LT",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:vsat.lrv.lt",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "lv-mod",
+   "name": "Verteidigungsministerium Lettland",
+   "land": "LV",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:mod.gov.lv",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "lv-naf",
+   "name": "Streitkraefte Lettland (NBS)",
+   "land": "LV",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:mil.lv",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "lv-vrs",
+   "name": "Grenzschutz Lettland",
+   "land": "LV",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:rs.gov.lv",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "ee-mil",
+   "name": "Streitkraefte Estland",
+   "land": "EE",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": "https://mil.ee/en/feed/",
+   "gnews": "site:mil.ee",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "ee-mod",
+   "name": "Verteidigungsministerium Estland",
+   "land": "EE",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:kaitseministeerium.ee",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "pl-wp",
+   "name": "Streitkraefte Polen (inkl. Operatives Kommando)",
+   "land": "PL",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:wojsko-polskie.pl",
+   "lang": "pl",
+   "region": true
+  },
+  {
+   "id": "pl-mon",
+   "name": "Verteidigungsministerium Polen",
+   "land": "PL",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:gov.pl obrona narodowa",
+   "lang": "pl",
+   "region": true
+  },
+  {
+   "id": "pl-sg",
+   "name": "Grenzschutz Polen",
+   "land": "PL",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:strazgraniczna.pl",
+   "lang": "pl",
+   "region": true
+  },
+  {
+   "id": "fi-pv",
+   "name": "Streitkraefte Finnland",
+   "land": "FI",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:puolustusvoimat.fi",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "fi-raja",
+   "name": "Grenzschutz Finnland",
+   "land": "FI",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:raja.fi",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "se-fm",
+   "name": "Streitkraefte Schweden",
+   "land": "SE",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:forsvarsmakten.se",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "de-bw",
+   "name": "Bundeswehr (u.a. Panzerbrigade 45 Litauen)",
+   "land": "DE",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:bundeswehr.de Litauen OR Ostsee OR Baltikum OR Ostflanke",
+   "lang": "de",
+   "region": true
+  },
+  {
+   "id": "uk-mod",
+   "name": "UK Verteidigungsministerium (gov.uk)",
+   "land": "UK",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": "https://www.gov.uk/search/news-and-communications.atom?organisations%5B%5D=ministry-of-defence",
+   "gnews": "site:gov.uk Estonia OR Baltic OR \"Joint Expeditionary Force\"",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "uk-army",
+   "name": "British Army (eFP Estland, Op CABRIT)",
+   "land": "UK",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:army.mod.uk Estonia OR Baltic OR Poland",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "uk-rn",
+   "name": "Royal Navy (Ostsee)",
+   "land": "UK",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:royalnavy.mod.uk Baltic",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "uk-raf",
+   "name": "Royal Air Force (Air Policing)",
+   "land": "UK",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:raf.mod.uk Baltic OR Estonia OR Poland",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "jef",
+   "name": "Joint Expeditionary Force (UK-gefuehrt, 10 Staaten)",
+   "land": "UK",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "\"Joint Expeditionary Force\" Baltic OR Russia",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "us-eucom",
+   "name": "US European Command",
+   "land": "US",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:eucom.mil",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "us-army-eu",
+   "name": "US Army Europe and Africa / V Corps",
+   "land": "US",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:europeafrica.army.mil OR site:vcorps.army.mil",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "us-dvids",
+   "name": "DVIDS (US-Militaermeldungen)",
+   "land": "US",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:dvidshub.net Lithuania OR Latvia OR Estonia OR Poland",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "ca-reassurance",
+   "name": "Kanada, Operation REASSURANCE (Brigade Lettland)",
+   "land": "CA",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "\"Operation REASSURANCE\" OR \"Multinational Brigade Latvia\"",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "fr-lynx",
+   "name": "Frankreich, Mission Lynx (Estland) / Aigle",
+   "land": "FR",
+   "typ": "offiziell",
+   "verl": "B",
+   "rss": null,
+   "gnews": "\"mission Lynx\" Estonie OR \"armée française\" Estonie OR Lituanie",
+   "lang": "fr",
+   "region": false
+  },
+  {
+   "id": "nl-def",
+   "name": "Niederlande (eFP Litauen)",
+   "land": "NL",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:defensie.nl Litouwen OR Baltische",
+   "lang": "nl",
+   "region": false
+  },
+  {
+   "id": "nato",
+   "name": "NATO Hauptquartier",
+   "land": "NATO",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:nato.int",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "nato-shape",
+   "name": "SHAPE",
+   "land": "NATO",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:shape.nato.int",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "nato-aircom",
+   "name": "NATO Allied Air Command (Air Policing, Alarmstarts)",
+   "land": "NATO",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:ac.nato.int",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "nato-marcom",
+   "name": "NATO Maritime Command (Baltic Sentry)",
+   "land": "NATO",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:mc.nato.int OR \"Baltic Sentry\"",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "nato-mncne",
+   "name": "Multinational Corps Northeast (Stettin)",
+   "land": "NATO",
+   "typ": "offiziell",
+   "verl": "A",
+   "rss": null,
+   "gnews": "site:mncne.nato.int OR \"Multinational Corps Northeast\"",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "nato-sentry",
+   "name": "Eastern Sentry / NATO-Ostflanke",
+   "land": "NATO",
+   "typ": "offiziell",
+   "verl": "B",
+   "rss": null,
+   "gnews": "\"Eastern Sentry\" NATO",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "by-mod",
+   "name": "Verteidigungsministerium Belarus (Eigenangabe)",
+   "land": "BY",
+   "typ": "gegenseite",
+   "verl": "B",
+   "rss": null,
+   "gnews": "site:mil.by",
+   "lang": "ru",
+   "region": false
+  },
+  {
+   "id": "ru-mod",
+   "name": "Verteidigungsministerium Russland (Eigenangabe)",
+   "land": "RU",
+   "typ": "gegenseite",
+   "verl": "B",
+   "rss": null,
+   "gnews": "Baltic Fleet OR Kaliningrad OR \"Leningrad Military District\" exercise Russia defence ministry",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "isw",
+   "name": "ISW (Institute for the Study of War)",
+   "land": "US",
+   "typ": "analyse",
+   "verl": "B",
+   "rss": null,
+   "gnews": "site:understandingwar.org",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "osw",
+   "name": "OSW Warschau",
+   "land": "PL",
+   "typ": "analyse",
+   "verl": "B",
+   "rss": null,
+   "gnews": "site:osw.waw.pl",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "icds",
+   "name": "ICDS Tallinn",
+   "land": "EE",
+   "typ": "analyse",
+   "verl": "B",
+   "rss": null,
+   "gnews": "site:icds.ee",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "rusi",
+   "name": "RUSI London",
+   "land": "UK",
+   "typ": "analyse",
+   "verl": "B",
+   "rss": null,
+   "gnews": "site:rusi.org Baltic OR Kaliningrad OR Suwalki",
+   "lang": "en",
+   "region": false
+  },
+  {
+   "id": "defence24",
+   "name": "Defence24",
+   "land": "PL",
+   "typ": "medien",
+   "verl": "B",
+   "rss": null,
+   "gnews": "site:defence24.com",
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "lrt",
+   "name": "LRT (Litauen, oeffentlich)",
+   "land": "LT",
+   "typ": "medien",
+   "verl": "B",
+   "rss": "https://www.lrt.lt/en/news-in-english?rss",
+   "gnews": null,
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "err",
+   "name": "ERR (Estland, oeffentlich)",
+   "land": "EE",
+   "typ": "medien",
+   "verl": "B",
+   "rss": "https://news.err.ee/rss",
+   "gnews": null,
+   "lang": "en",
+   "region": true
+  },
+  {
+   "id": "lsm",
+   "name": "LSM (Lettland, oeffentlich)",
+   "land": "LV",
+   "typ": "medien",
+   "verl": "B",
+   "rss": "https://eng.lsm.lv/rss/",
+   "gnews": null,
+   "lang": "en",
+   "region": true
+  }
  ],
  "suchen_thematisch": {
-  "en": ["\"Suwalki gap\" OR \"Suwalki corridor\"", "Kaliningrad military OR troops OR Iskander", "Belarus troops border Lithuania OR Poland OR Latvia", "Baltic airspace violation OR \"air policing\" scramble", "Baltic Sea cable damage OR \"shadow fleet\"", "GPS jamming Baltic OR Kaliningrad", "Zapad exercise OR \"snap exercise\" Belarus OR Russia", "Narva border Russia", "NATO eastern flank deployment OR reinforcement Baltic", "Lithuania Belarus border closed OR balloons OR drones", "Russian troops Pskov OR \"Leningrad Military District\""],
-  "de": ["\"Brigade Litauen\" OR \"Panzerbrigade 45\"", "Suwalki-Lücke OR Suwalki-Korridor", "Kaliningrad Militär OR Truppen", "Ostflanke Verlegung OR Truppen Baltikum", "Ostsee Kabel beschädigt OR Schattenflotte"],
-  "pl": ["\"przesmyk suwalski\"", "Białoruś granica wojsko OR żołnierze"],
-  "lt": ["Suvalkų koridorius OR Kaliningrado karinis"]
+  "en": [
+   "\"Suwalki gap\" OR \"Suwalki corridor\"",
+   "Kaliningrad military OR troops OR Iskander",
+   "Belarus troops border Lithuania OR Poland OR Latvia",
+   "Baltic airspace violation OR \"air policing\" scramble",
+   "Baltic Sea cable damage OR \"shadow fleet\"",
+   "GPS jamming Baltic OR Kaliningrad",
+   "Zapad exercise OR \"snap exercise\" Belarus OR Russia",
+   "Narva border Russia",
+   "NATO eastern flank deployment OR reinforcement Baltic",
+   "Lithuania Belarus border closed OR balloons OR drones",
+   "Russian troops Pskov OR \"Leningrad Military District\""
+  ],
+  "de": [
+   "\"Brigade Litauen\" OR \"Panzerbrigade 45\"",
+   "Suwalki-Lücke OR Suwalki-Korridor",
+   "Kaliningrad Militär OR Truppen",
+   "Ostflanke Verlegung OR Truppen Baltikum",
+   "Ostsee Kabel beschädigt OR Schattenflotte"
+  ],
+  "pl": [
+   "\"przesmyk suwalski\"",
+   "Białoruś granica wojsko OR żołnierze"
+  ],
+  "lt": [
+   "Suvalkų koridorius OR Kaliningrado karinis"
+  ]
  },
- "verlaessliche_verlage": ["reuters", "associated press", "ap news", "afp", "dpa", "bbc", "deutsche welle", "dw", "tagesschau", "zdf", "spiegel", "faz", "sueddeutsche", "nzz", "srf", "zeit", "handelsblatt", "politico", "financial times", "the guardian", "the times", "new york times", "washington post", "wall street journal", "bloomberg", "euronews", "lrt", "err", "lsm", "delfi", "postimees", "notes from poland", "polskie radio", "tvp", "defence24", "defense news", "breaking defense", "the war zone", "janes", "military times", "stars and stripes", "yle", "svt", "nrk", "kyiv independent", "isw", "understandingwar", "osw", "rusi", "chatham house", "nato", "gov.uk", "bundeswehr", "kam.lt", "mil.ee"],
- "orte": [
-  {"id": "suwalki", "name": "Suwalki-Korridor", "lat": 54.10, "lon": 23.20, "art": "korridor", "muster": ["suwalki", "suvalk", "suwalken", "przesmyk"]},
-  {"id": "kaliningrad", "name": "Kaliningrad", "lat": 54.71, "lon": 20.51, "art": "ru", "muster": ["kaliningrad", "karaliauci", "krolewiec", "koenigsberg", "konigsberg"]},
-  {"id": "baltijsk", "name": "Baltijsk (Baltische Flotte)", "lat": 54.65, "lon": 19.91, "art": "ru", "muster": ["baltiysk", "baltijsk", "baltiisk", "pillau"]},
-  {"id": "tschernjachowsk", "name": "Tschernjachowsk (Iskander)", "lat": 54.63, "lon": 21.81, "art": "ru", "muster": ["chernyakhovsk", "tschernjachowsk", "cerniachovsk", "czerniachowsk", "insterburg"]},
-  {"id": "gusew", "name": "Gussew", "lat": 54.59, "lon": 22.20, "art": "ru", "muster": ["gusev", "gussew"]},
-  {"id": "sowetsk", "name": "Sowetsk", "lat": 55.08, "lon": 21.88, "art": "ru", "muster": ["sovetsk", "sowetsk", "tilsit"]},
-  {"id": "pskow", "name": "Pskow", "lat": 57.82, "lon": 28.33, "art": "ru", "muster": ["pskov", "pskow"]},
-  {"id": "luga", "name": "Luga", "lat": 58.74, "lon": 29.85, "art": "ru", "muster": [" luga "]},
-  {"id": "st-petersburg", "name": "St. Petersburg / Kronstadt", "lat": 59.94, "lon": 30.31, "art": "ru", "muster": ["st. petersburg", "saint petersburg", "sankt petersburg", "kronstadt", "leningrad military district", "leningrader militaerbezirk"]},
-  {"id": "ust-luga", "name": "Ust-Luga", "lat": 59.68, "lon": 28.40, "art": "ru", "muster": ["ust-luga", "ust luga"]},
-  {"id": "grodno", "name": "Grodno", "lat": 53.68, "lon": 23.83, "art": "by", "muster": ["grodno", "hrodna", "gardin"]},
-  {"id": "lida", "name": "Lida", "lat": 53.89, "lon": 25.30, "art": "by", "muster": [" lida"]},
-  {"id": "minsk", "name": "Minsk", "lat": 53.90, "lon": 27.56, "art": "by", "muster": [" minsk"]},
-  {"id": "baranowitschi", "name": "Baranowitschi", "lat": 53.13, "lon": 26.01, "art": "by", "muster": ["baranovich", "baranavich", "baranowitsch"]},
-  {"id": "brest-by", "name": "Brest (Belarus)", "lat": 52.10, "lon": 23.69, "art": "by", "muster": ["brest", "brzesc"]},
-  {"id": "asipowitschy", "name": "Asipowitschy", "lat": 53.30, "lon": 28.64, "art": "by", "muster": ["osipovichi", "asipovichy", "ossipowitschi"]},
-  {"id": "vilnius", "name": "Vilnius", "lat": 54.69, "lon": 25.28, "art": "nato", "muster": ["vilnius", "wilna", "wilno"]},
-  {"id": "kaunas", "name": "Kaunas", "lat": 54.90, "lon": 23.89, "art": "nato", "muster": ["kaunas", "kowno"]},
-  {"id": "rukla", "name": "Rukla (eFP Litauen)", "lat": 55.03, "lon": 24.37, "art": "nato", "muster": ["rukla"]},
-  {"id": "rudninkai", "name": "Rudninkai (Brigade Litauen)", "lat": 54.40, "lon": 25.05, "art": "nato", "muster": ["rudninkai"]},
-  {"id": "pabrade", "name": "Pabrade", "lat": 54.98, "lon": 25.76, "art": "nato", "muster": ["pabrade"]},
-  {"id": "siauliai", "name": "Siauliai (Air Policing)", "lat": 55.89, "lon": 23.39, "art": "nato", "muster": ["siauliai", "zokniai", "schaulen"]},
-  {"id": "klaipeda", "name": "Klaipeda", "lat": 55.71, "lon": 21.13, "art": "nato", "muster": ["klaipeda", "memel"]},
-  {"id": "riga", "name": "Riga", "lat": 56.95, "lon": 24.11, "art": "nato", "muster": [" riga", "riga "]},
-  {"id": "adazi", "name": "Adazi (Brigade Lettland, CA)", "lat": 57.08, "lon": 24.32, "art": "nato", "muster": ["adazi"]},
-  {"id": "lielvarde", "name": "Lielvarde", "lat": 56.78, "lon": 24.85, "art": "nato", "muster": ["lielvarde"]},
-  {"id": "daugavpils", "name": "Daugavpils / Latgale", "lat": 55.87, "lon": 26.54, "art": "nato", "muster": ["daugavpils", "latgal", "kraslava", "rezekne", "balvi"]},
-  {"id": "tallinn", "name": "Tallinn", "lat": 59.44, "lon": 24.75, "art": "nato", "muster": ["tallinn"]},
-  {"id": "tapa", "name": "Tapa (eFP Estland, UK)", "lat": 59.26, "lon": 25.96, "art": "nato", "muster": [" tapa"]},
-  {"id": "amari", "name": "Amari (Air Policing)", "lat": 59.26, "lon": 24.21, "art": "nato", "muster": [" amari"]},
-  {"id": "narva", "name": "Narva", "lat": 59.38, "lon": 28.19, "art": "nato", "muster": ["narva", "ivangorod"]},
-  {"id": "orzysz", "name": "Orzysz (eFP Polen)", "lat": 53.81, "lon": 21.95, "art": "nato", "muster": ["orzysz"]},
-  {"id": "bialystok", "name": "Bialystok / Podlachien", "lat": 53.13, "lon": 23.16, "art": "nato", "muster": ["bialystok", "podlas", "podlach"]},
-  {"id": "gdansk", "name": "Danzig / Gdingen", "lat": 54.40, "lon": 18.60, "art": "nato", "muster": ["gdansk", "gdynia", "danzig"]},
-  {"id": "gotland", "name": "Gotland", "lat": 57.50, "lon": 18.50, "art": "nato", "muster": ["gotland", "visby"]},
-  {"id": "bornholm", "name": "Bornholm", "lat": 55.13, "lon": 14.92, "art": "nato", "muster": ["bornholm"]},
-  {"id": "finn-meerbusen", "name": "Finnischer Meerbusen", "lat": 59.85, "lon": 26.00, "art": "see", "muster": ["gulf of finland", "finnischen meerbusen", "finnischer meerbusen", "soome laht"]},
-  {"id": "ostsee", "name": "Ostsee", "lat": 56.30, "lon": 19.20, "art": "see", "muster": ["baltic sea", "ostsee", "baltyk", "baltijos jura"]},
-  {"id": "litauen", "name": "Litauen", "lat": 55.20, "lon": 23.90, "art": "land", "muster": ["lithuania", "litauen", "lietuv", "litwa"]},
-  {"id": "lettland", "name": "Lettland", "lat": 56.85, "lon": 24.60, "art": "land", "muster": ["latvia", "lettland", "latvij", "lotwa"]},
-  {"id": "estland", "name": "Estland", "lat": 58.60, "lon": 25.00, "art": "land", "muster": ["estonia", "estland", "eesti"]},
-  {"id": "belarus", "name": "Belarus", "lat": 53.70, "lon": 27.90, "art": "by", "muster": ["belarus", "weissrussland", "bialorus", "baltarus", "baltkriev"]},
-  {"id": "polen-no", "name": "Polen (Nordost)", "lat": 53.60, "lon": 22.50, "art": "nato", "muster": ["poland", "polen", "polsk", "polish"]},
-  {"id": "finnland", "name": "Finnland (Ostgrenze)", "lat": 61.00, "lon": 28.50, "art": "nato", "muster": ["finland", "finnland", "suomi"]}
+ "verlaessliche_verlage": [
+  "reuters",
+  "associated press",
+  "ap news",
+  "afp",
+  "dpa",
+  "bbc",
+  "deutsche welle",
+  "dw",
+  "tagesschau",
+  "zdf",
+  "spiegel",
+  "faz",
+  "sueddeutsche",
+  "nzz",
+  "srf",
+  "zeit",
+  "handelsblatt",
+  "politico",
+  "financial times",
+  "the guardian",
+  "the times",
+  "new york times",
+  "washington post",
+  "wall street journal",
+  "bloomberg",
+  "euronews",
+  "lrt",
+  "err",
+  "lsm",
+  "delfi",
+  "postimees",
+  "notes from poland",
+  "polskie radio",
+  "tvp",
+  "defence24",
+  "defense news",
+  "breaking defense",
+  "the war zone",
+  "janes",
+  "military times",
+  "stars and stripes",
+  "yle",
+  "svt",
+  "nrk",
+  "kyiv independent",
+  "isw",
+  "understandingwar",
+  "osw",
+  "rusi",
+  "chatham house",
+  "nato",
+  "gov.uk",
+  "bundeswehr",
+  "kam.lt",
+  "mil.ee"
  ],
- "region_muster": ["baltic", "baltikum", "baltisch", "ostflanke", "eastern flank", "ostsee", "suwalki", "kaliningrad", "belarus", "lithuania", "latvia", "estonia", "litauen", "lettland", "estland", "narva", "gotland"],
- "militaer_muster": ["troops", "soldier", "military", "army", "brigade", "battalion", "division", "regiment", "tank", "armour", "armor", "artillery", "missile", "iskander", "air defen", "fighter", "jet", "drone", "uav", "warship", "frigate", "corvette", "submarine", "navy", "naval", "exercise", "drill", "deploy", "redeploy", "reinforce", "airspace", "border guard", "mobiliz", "nuclear", "sabotage", "cable", "jamming", "gnss", "shadow fleet", "air policing", "scramble", "intercept", "nato", "efp", "forward land forces", "truppe", "soldat", "militaer", "bundeswehr", "panzer", "rakete", "luftabwehr", "kampfjet", "drohne", "kriegsschiff", "marine", "uebung", "manoever", "verleg", "verstaerk", "luftraum", "grenzschutz", "mobilmach", "atomwaff", "kabel", "stoersender", "wojsk", "zolnierz", "cwiczen", "granic", "kariuomen", "pratyb", "dron", "armee", "militaire", "krijgsmacht", "kaitsevae", "puolustusvoim"],
+ "orte": [
+  {
+   "id": "suwalki",
+   "name": "Suwalki-Korridor",
+   "lat": 54.1,
+   "lon": 23.2,
+   "art": "korridor",
+   "muster": [
+    "suwalki",
+    "suvalk",
+    "suwalken",
+    "przesmyk"
+   ]
+  },
+  {
+   "id": "kaliningrad",
+   "name": "Kaliningrad",
+   "lat": 54.71,
+   "lon": 20.51,
+   "art": "ru",
+   "muster": [
+    "kaliningrad",
+    "karaliauci",
+    "krolewiec",
+    "koenigsberg",
+    "konigsberg"
+   ]
+  },
+  {
+   "id": "baltijsk",
+   "name": "Baltijsk (Baltische Flotte)",
+   "lat": 54.65,
+   "lon": 19.91,
+   "art": "ru",
+   "muster": [
+    "baltiysk",
+    "baltijsk",
+    "baltiisk",
+    "pillau"
+   ]
+  },
+  {
+   "id": "tschernjachowsk",
+   "name": "Tschernjachowsk (Iskander)",
+   "lat": 54.63,
+   "lon": 21.81,
+   "art": "ru",
+   "muster": [
+    "chernyakhovsk",
+    "tschernjachowsk",
+    "cerniachovsk",
+    "czerniachowsk",
+    "insterburg"
+   ]
+  },
+  {
+   "id": "gusew",
+   "name": "Gussew",
+   "lat": 54.59,
+   "lon": 22.2,
+   "art": "ru",
+   "muster": [
+    "gusev",
+    "gussew"
+   ]
+  },
+  {
+   "id": "sowetsk",
+   "name": "Sowetsk",
+   "lat": 55.08,
+   "lon": 21.88,
+   "art": "ru",
+   "muster": [
+    "sovetsk",
+    "sowetsk",
+    "tilsit"
+   ]
+  },
+  {
+   "id": "pskow",
+   "name": "Pskow",
+   "lat": 57.82,
+   "lon": 28.33,
+   "art": "ru",
+   "muster": [
+    "pskov",
+    "pskow"
+   ]
+  },
+  {
+   "id": "luga",
+   "name": "Luga",
+   "lat": 58.74,
+   "lon": 29.85,
+   "art": "ru",
+   "muster": [
+    " luga "
+   ]
+  },
+  {
+   "id": "st-petersburg",
+   "name": "St. Petersburg / Kronstadt",
+   "lat": 59.94,
+   "lon": 30.31,
+   "art": "ru",
+   "muster": [
+    "st. petersburg",
+    "saint petersburg",
+    "sankt petersburg",
+    "kronstadt",
+    "leningrad military district",
+    "leningrader militaerbezirk"
+   ]
+  },
+  {
+   "id": "ust-luga",
+   "name": "Ust-Luga",
+   "lat": 59.68,
+   "lon": 28.4,
+   "art": "ru",
+   "muster": [
+    "ust-luga",
+    "ust luga"
+   ]
+  },
+  {
+   "id": "grodno",
+   "name": "Grodno",
+   "lat": 53.68,
+   "lon": 23.83,
+   "art": "by",
+   "muster": [
+    "grodno",
+    "hrodna",
+    "gardin"
+   ]
+  },
+  {
+   "id": "lida",
+   "name": "Lida",
+   "lat": 53.89,
+   "lon": 25.3,
+   "art": "by",
+   "muster": [
+    " lida"
+   ]
+  },
+  {
+   "id": "minsk",
+   "name": "Minsk",
+   "lat": 53.9,
+   "lon": 27.56,
+   "art": "by",
+   "muster": [
+    " minsk"
+   ]
+  },
+  {
+   "id": "baranowitschi",
+   "name": "Baranowitschi",
+   "lat": 53.13,
+   "lon": 26.01,
+   "art": "by",
+   "muster": [
+    "baranovich",
+    "baranavich",
+    "baranowitsch"
+   ]
+  },
+  {
+   "id": "brest-by",
+   "name": "Brest (Belarus)",
+   "lat": 52.1,
+   "lon": 23.69,
+   "art": "by",
+   "muster": [
+    "brest",
+    "brzesc"
+   ]
+  },
+  {
+   "id": "asipowitschy",
+   "name": "Asipowitschy",
+   "lat": 53.3,
+   "lon": 28.64,
+   "art": "by",
+   "muster": [
+    "osipovichi",
+    "asipovichy",
+    "ossipowitschi"
+   ]
+  },
+  {
+   "id": "vilnius",
+   "name": "Vilnius",
+   "lat": 54.69,
+   "lon": 25.28,
+   "art": "nato",
+   "muster": [
+    "vilnius",
+    "wilna",
+    "wilno"
+   ]
+  },
+  {
+   "id": "kaunas",
+   "name": "Kaunas",
+   "lat": 54.9,
+   "lon": 23.89,
+   "art": "nato",
+   "muster": [
+    "kaunas",
+    "kowno"
+   ]
+  },
+  {
+   "id": "rukla",
+   "name": "Rukla (eFP Litauen)",
+   "lat": 55.03,
+   "lon": 24.37,
+   "art": "nato",
+   "muster": [
+    "rukla"
+   ]
+  },
+  {
+   "id": "rudninkai",
+   "name": "Rudninkai (Brigade Litauen)",
+   "lat": 54.4,
+   "lon": 25.05,
+   "art": "nato",
+   "muster": [
+    "rudninkai"
+   ]
+  },
+  {
+   "id": "pabrade",
+   "name": "Pabrade",
+   "lat": 54.98,
+   "lon": 25.76,
+   "art": "nato",
+   "muster": [
+    "pabrade"
+   ]
+  },
+  {
+   "id": "siauliai",
+   "name": "Siauliai (Air Policing)",
+   "lat": 55.89,
+   "lon": 23.39,
+   "art": "nato",
+   "muster": [
+    "siauliai",
+    "zokniai",
+    "schaulen"
+   ]
+  },
+  {
+   "id": "klaipeda",
+   "name": "Klaipeda",
+   "lat": 55.71,
+   "lon": 21.13,
+   "art": "nato",
+   "muster": [
+    "klaipeda",
+    "memel"
+   ]
+  },
+  {
+   "id": "riga",
+   "name": "Riga",
+   "lat": 56.95,
+   "lon": 24.11,
+   "art": "nato",
+   "muster": [
+    " riga",
+    "riga "
+   ]
+  },
+  {
+   "id": "adazi",
+   "name": "Adazi (Brigade Lettland, CA)",
+   "lat": 57.08,
+   "lon": 24.32,
+   "art": "nato",
+   "muster": [
+    "adazi"
+   ]
+  },
+  {
+   "id": "lielvarde",
+   "name": "Lielvarde",
+   "lat": 56.78,
+   "lon": 24.85,
+   "art": "nato",
+   "muster": [
+    "lielvarde"
+   ]
+  },
+  {
+   "id": "daugavpils",
+   "name": "Daugavpils / Latgale",
+   "lat": 55.87,
+   "lon": 26.54,
+   "art": "nato",
+   "muster": [
+    "daugavpils",
+    "latgal",
+    "kraslava",
+    "rezekne",
+    "balvi"
+   ]
+  },
+  {
+   "id": "tallinn",
+   "name": "Tallinn",
+   "lat": 59.44,
+   "lon": 24.75,
+   "art": "nato",
+   "muster": [
+    "tallinn"
+   ]
+  },
+  {
+   "id": "tapa",
+   "name": "Tapa (eFP Estland, UK)",
+   "lat": 59.26,
+   "lon": 25.96,
+   "art": "nato",
+   "muster": [
+    " tapa"
+   ]
+  },
+  {
+   "id": "amari",
+   "name": "Amari (Air Policing)",
+   "lat": 59.26,
+   "lon": 24.21,
+   "art": "nato",
+   "muster": [
+    " amari"
+   ]
+  },
+  {
+   "id": "narva",
+   "name": "Narva",
+   "lat": 59.38,
+   "lon": 28.19,
+   "art": "nato",
+   "muster": [
+    "narva",
+    "ivangorod"
+   ]
+  },
+  {
+   "id": "orzysz",
+   "name": "Orzysz (eFP Polen)",
+   "lat": 53.81,
+   "lon": 21.95,
+   "art": "nato",
+   "muster": [
+    "orzysz"
+   ]
+  },
+  {
+   "id": "bialystok",
+   "name": "Bialystok / Podlachien",
+   "lat": 53.13,
+   "lon": 23.16,
+   "art": "nato",
+   "muster": [
+    "bialystok",
+    "podlas",
+    "podlach"
+   ]
+  },
+  {
+   "id": "gdansk",
+   "name": "Danzig / Gdingen",
+   "lat": 54.4,
+   "lon": 18.6,
+   "art": "nato",
+   "muster": [
+    "gdansk",
+    "gdynia",
+    "danzig"
+   ]
+  },
+  {
+   "id": "gotland",
+   "name": "Gotland",
+   "lat": 57.5,
+   "lon": 18.5,
+   "art": "nato",
+   "muster": [
+    "gotland",
+    "visby"
+   ]
+  },
+  {
+   "id": "bornholm",
+   "name": "Bornholm",
+   "lat": 55.13,
+   "lon": 14.92,
+   "art": "nato",
+   "muster": [
+    "bornholm"
+   ]
+  },
+  {
+   "id": "finn-meerbusen",
+   "name": "Finnischer Meerbusen",
+   "lat": 59.85,
+   "lon": 26.0,
+   "art": "see",
+   "muster": [
+    "gulf of finland",
+    "finnischen meerbusen",
+    "finnischer meerbusen",
+    "soome laht"
+   ]
+  },
+  {
+   "id": "ostsee",
+   "name": "Ostsee",
+   "lat": 56.3,
+   "lon": 19.2,
+   "art": "see",
+   "muster": [
+    "baltic sea",
+    "ostsee",
+    "baltyk",
+    "baltijos jura"
+   ]
+  },
+  {
+   "id": "litauen",
+   "name": "Litauen",
+   "lat": 55.2,
+   "lon": 23.9,
+   "art": "land",
+   "muster": [
+    "lithuania",
+    "litauen",
+    "lietuv",
+    "litwa"
+   ]
+  },
+  {
+   "id": "lettland",
+   "name": "Lettland",
+   "lat": 56.85,
+   "lon": 24.6,
+   "art": "land",
+   "muster": [
+    "latvia",
+    "lettland",
+    "latvij",
+    "lotwa"
+   ]
+  },
+  {
+   "id": "estland",
+   "name": "Estland",
+   "lat": 58.6,
+   "lon": 25.0,
+   "art": "land",
+   "muster": [
+    "estonia",
+    "estland",
+    "eesti"
+   ]
+  },
+  {
+   "id": "belarus",
+   "name": "Belarus",
+   "lat": 53.7,
+   "lon": 27.9,
+   "art": "by",
+   "muster": [
+    "belarus",
+    "weissrussland",
+    "bialorus",
+    "baltarus",
+    "baltkriev"
+   ]
+  },
+  {
+   "id": "polen-no",
+   "name": "Polen (Nordost)",
+   "lat": 53.6,
+   "lon": 22.5,
+   "art": "nato",
+   "muster": [
+    "poland",
+    "polen",
+    "polsk",
+    "polish"
+   ]
+  },
+  {
+   "id": "finnland",
+   "name": "Finnland (Ostgrenze)",
+   "lat": 61.0,
+   "lon": 28.5,
+   "art": "nato",
+   "muster": [
+    "finland",
+    "finnland",
+    "suomi"
+   ]
+  }
+ ],
+ "region_muster": [
+  "baltic",
+  "baltikum",
+  "baltisch",
+  "ostflanke",
+  "eastern flank",
+  "ostsee",
+  "suwalki",
+  "kaliningrad",
+  "belarus",
+  "lithuania",
+  "latvia",
+  "estonia",
+  "litauen",
+  "lettland",
+  "estland",
+  "narva",
+  "gotland",
+  "bialorus",
+  "litw",
+  "lotw",
+  "estoni",
+  "przesmyk",
+  "podlas",
+  "warmi",
+  "mazur",
+  "krolewiec"
+ ],
+ "militaer_muster": [
+  "troops",
+  "soldier",
+  "military",
+  "army",
+  "brigade",
+  "battalion",
+  "division",
+  "regiment",
+  "tank",
+  "armour",
+  "armor",
+  "artillery",
+  "missile",
+  "iskander",
+  "air defen",
+  "fighter",
+  "jet",
+  "drone",
+  "uav",
+  "warship",
+  "frigate",
+  "corvette",
+  "submarine",
+  "navy",
+  "naval",
+  "exercise",
+  "drill",
+  "deploy",
+  "redeploy",
+  "reinforce",
+  "airspace",
+  "border guard",
+  "mobiliz",
+  "nuclear",
+  "sabotage",
+  "cable",
+  "jamming",
+  "gnss",
+  "shadow fleet",
+  "air policing",
+  "scramble",
+  "intercept",
+  "nato",
+  "efp",
+  "forward land forces",
+  "truppe",
+  "soldat",
+  "militaer",
+  "bundeswehr",
+  "panzer",
+  "rakete",
+  "luftabwehr",
+  "kampfjet",
+  "drohne",
+  "kriegsschiff",
+  "marine",
+  "uebung",
+  "manoever",
+  "verleg",
+  "verstaerk",
+  "luftraum",
+  "grenzschutz",
+  "mobilmach",
+  "atomwaff",
+  "kabel",
+  "stoersender",
+  "wojsk",
+  "zolnierz",
+  "cwiczen",
+  "kariuomen",
+  "pratyb",
+  "dron",
+  "armee",
+  "militaire",
+  "krijgsmacht",
+  "kaitsevae",
+  "puolustusvoim"
+ ],
  "indikatoren": [
-  {"id": "O1", "name": "Russische/belarussische Kraefte an der Grenze (Verlegungen, Konzentration)", "gewicht": 3, "index": "eskalation",
-   "muster": ["troops", "forces", "brigade", "battalion", "division", "tank", "iskander", "redeploy", "concentrat", "build-up", "buildup", "truppe", "verleg", "zusammenzieh", "wojsk"], "akteure": ["RU", "BY"], "schwellen": [2, 5, 9, 15],
-   "kriterien": ["keine Auffaelligkeit", "einzelne Verlegungen gemeldet", "wiederholte Verlegungen/Verstaerkungen nahe Grenze", "Konzentration mehrerer Verbaende nahe Grenze bestaetigt", "Aufmarsch in Angriffsstaerke bestaetigt"],
-   "basis": {"stufe": 1, "stand": "2026-11-17", "text": "Belarus uebte im September 2026 mit mechanisierten und Panzerbataillonen nahe der Grenze zu PL/LT, u.a. Uebungsplatz Hoza an der litauischen Grenze; Truppenzahl unter Schwelle Wiener Dokument (Eigenangabe BY). Kein Aufmarsch in Angriffsstaerke bekannt.", "quelle": "https://www.euronews.com/my-europe/2026/09/16/belarus-concentrates-forces-near-border-with-poland-and-lithuania-in-military-drill"}},
-  {"id": "O2", "name": "Uebungen RU/BY (Bereitschaftspruefungen, Zapad, nukleare Uebungen)", "gewicht": 2, "index": "eskalation",
-   "muster": ["exercise", "drill", "snap", "readiness", "zapad", "nuclear", "uebung", "manoever", "cwiczen", "pratyb"], "akteure": ["RU", "BY"], "schwellen": [2, 5, 9, 15],
-   "kriterien": ["keine", "angekuendigte Routineuebungen", "gehaeufte oder grenznahe Uebungen", "unangekuendigte Grossuebung/Bereitschaftspruefung", "Uebung mit nuklearer Komponente oder Uebergang in Aufmarsch"],
-   "basis": {"stufe": 2, "stand": "2026-11-17", "text": "Grenznahe Uebungen BY (Sept. 2026) im Raum Suwalki-Korridor. Ab Erstlauf durch Meldungen nachfuehren.", "quelle": "https://www.euronews.com/my-europe/2026/09/16/belarus-concentrates-forces-near-border-with-poland-and-lithuania-in-military-drill"}},
-  {"id": "O3", "name": "NATO-Verstaerkung und Verlegungen (DE, UK, US, CA, PL, Nordics)", "gewicht": 1, "index": "verlegung",
-   "muster": ["deploy", "reinforce", "rotation", "arrive", "brigade", "battalion", "efp", "forward land forces", "exercise", "verleg", "verstaerk", "rotation", "eintreff", "brigade litauen", "panzerbrigade 45", "operation reassurance", "cabrit", "lynx"], "akteure": ["DE", "UK", "US", "CA", "PL", "NATO", "FR", "NL", "NO", "SE", "FI", "DK", "LT", "LV", "EE"], "schwellen": [4, 10, 18, 30],
-   "kriterien": ["Routine", "laufende Rotationen/Uebungen", "gehaeufte Verlegungen, Grossuebungen", "aussergewoehnliche Schnellverlegungen", "Verstaerkung in Kriegsstaerke / NATO-Verteidigungsplaene aktiviert"],
-   "basis": {"stufe": 2, "stand": "2026-11-17", "text": "Panzerbrigade 45 Litauen im Aufbau (Einsatzbereitschaft 2027 geplant), Grossuebung Freedom Shield 2026; strukturelle Verstaerkung, Abschreckung.", "quelle": "https://www.bundeswehr.de/de/organisation/heer/aktuelles/freedom-shield-2026-gefechtsuebung-litauen"}},
-  {"id": "O4", "name": "Grenz- und Luftraumvorfaelle (Drohnen, Ballone, Verletzungen, Grenzschliessung)", "gewicht": 3, "index": "eskalation",
-   "muster": ["airspace", "violation", "incursion", "drone", "uav", "balloon", "border closed", "closes border", "shot down", "air alert", "luftraum", "verletz", "drohne", "ballon", "grenze geschlossen", "abgeschossen", "luftalarm", "dron", "balion", "naruszen", "granic"], "akteure": [], "schwellen": [3, 7, 12, 20],
-   "kriterien": ["keine", "Einzelvorfaelle", "wiederholte Vorfaelle, Proteste, Luftalarm", "Abschuesse, Flughafen- oder Grenzschliessungen", "bewaffneter Zwischenfall mit Personen- oder Sachschaden"],
-   "basis": {"stufe": 3, "stand": "2026-11-17", "text": "Serie von Drohnenvorfaellen 2026 in LT/LV/EE/FI; 15.09.2026 russische Drohne bei Kaunas durch NATO-Eurofighter abgeschossen; 11.11.2026 Luftalarme und Schliessung Flughaefen Vilnius/Kaunas (Zusammenhang ukrainischer Angriff Ust-Luga). Schmuggelballone aus Belarus wiederkehrend.", "quelle": "https://en.wikipedia.org/wiki/2026_drone_incursions_into_the_Baltic_states_and_Finland"}},
-  {"id": "O5", "name": "Ostsee: Kabel/Pipelines, Schattenflotte, Marinezwischenfaelle", "gewicht": 2, "index": "eskalation",
-   "muster": ["cable", "pipeline", "anchor", "shadow fleet", "tanker", "warship", "submarine", "frigate", "boarding", "kabel", "anker", "schattenflotte", "kriegsschiff", "u-boot", "sabotage"], "akteure": [], "schwellen": [3, 6, 10, 16],
-   "kriterien": ["keine", "Einzelmeldungen", "gehaeufte Vorfaelle/Ermittlungen", "bestaetigte Sabotage an kritischer Infrastruktur", "Gefecht/Blockade auf See"],
-   "basis": {"stufe": 2, "stand": "2026-11-17", "text": "Anhaltende Vorfaelle mit Schattenflotte und Unterseekabeln seit 2024; NATO Baltic Sentry aktiv.", "quelle": "https://en.wikipedia.org/wiki/C-Lion1"}},
-  {"id": "O6", "name": "Luftraum und Elektronik: GNSS-Stoerungen, Luftraumsperren, Militaerflugaufkommen", "gewicht": 1, "index": "eskalation",
-   "muster": ["gps", "gnss", "jamming", "spoofing", "notam", "airspace closed", "restricted", "stoersender", "stoerung", "luftraum gesperrt"], "akteure": [], "schwellen": [3, 6, 10, 16],
-   "kriterien": ["normal", "bekannte Dauerstoerungen", "ausgeweitete Stoerungen/Sperrgebiete", "grossflaechige Sperrungen, starkes Militaerflugaufkommen", "Luftraum geschlossen"],
-   "basis": {"stufe": 2, "stand": "2026-11-17", "text": "GNSS-Stoerungen im Ostseeraum (Kaliningrad, St. Petersburg) seit 2023 Dauerzustand.", "quelle": "https://defence-blog.com/gps-jamming-hits-almost-all-of-natos-eastern-flank-in-one-day/"}},
-  {"id": "O7", "name": "Kaliningrad: Transit, Blockade, Drohungen, Stationierung", "gewicht": 2, "index": "eskalation",
-   "muster": ["kaliningrad", "transit", "blockade", "isolate", "suwalki", "nuclear", "iskander", "oreshnik", "krolewiec"], "akteure": [], "schwellen": [3, 6, 10, 16],
-   "kriterien": ["ruhig", "Rhetorik", "wiederholte Drohungen, Transitstreit", "konkrete Massnahmen (Transitsperre, Stationierung)", "militaerische Durchsetzung/Korridorversuch"],
-   "basis": {"stufe": 2, "stand": "2026-11-17", "text": "01.10.2026 Putin: bei Angriff auf Kaliningrad alle Waffen auf dem Tisch; 06.10.2026 Kreml zu litauischer Debatte ueber Nuklearwaffen-Stationierungsverbot.", "quelle": "https://www.chathamhouse.org/2026/10/russias-kaliningrad-threats-show-value-baltic-preparedness"}},
-  {"id": "O8", "name": "Formelle Signale (NATO Art. 4 durch Ostflanken-Staat, Mobilmachung, Ausnahmezustand)", "gewicht": 3, "index": "eskalation", "formell": true,
-   "muster": ["article 4", "artikel 4", "art. 4", "article 5", "artikel 5", "mobilization", "mobilisation", "mobilmachung", "state of emergency", "ausnahmezustand", "martial law", "kriegsrecht", "mobilizac"], "akteure": [], "schwellen": [1, 3, 6, 10],
-   "kriterien": ["keine", "Debatte", "formeller Antrag in Vorbereitung", "Art. 4 beantragt / Teilmobilmachung / Ausnahmezustand Grenzregion", "Art. 5 / Generalmobilmachung"],
-   "basis": {"stufe": 0, "stand": "2026-11-17", "text": "Kein formeller Schritt bekannt (manuell pruefen).", "quelle": ""}}
+  {
+   "id": "O1",
+   "name": "Russische/belarussische Kraefte an der Grenze (Verlegungen, Konzentration)",
+   "gewicht": 3,
+   "index": "eskalation",
+   "muster": [
+    "troops",
+    "forces",
+    "brigade",
+    "battalion",
+    "division",
+    "tank",
+    "iskander",
+    "redeploy",
+    "concentrat",
+    "build-up",
+    "buildup",
+    "truppe",
+    "verleg",
+    "zusammenzieh",
+    "wojsk"
+   ],
+   "akteure": [
+    "RU",
+    "BY"
+   ],
+   "schwellen": [
+    2,
+    5,
+    9,
+    15
+   ],
+   "kriterien": [
+    "keine Auffaelligkeit",
+    "einzelne Verlegungen gemeldet",
+    "wiederholte Verlegungen/Verstaerkungen nahe Grenze",
+    "Konzentration mehrerer Verbaende nahe Grenze bestaetigt",
+    "Aufmarsch in Angriffsstaerke bestaetigt"
+   ],
+   "basis": {
+    "stufe": 1,
+    "stand": "2026-11-17",
+    "text": "Belarus uebte im September 2026 mit mechanisierten und Panzerbataillonen nahe der Grenze zu PL/LT, u.a. Uebungsplatz Hoza an der litauischen Grenze; Truppenzahl unter Schwelle Wiener Dokument (Eigenangabe BY). Kein Aufmarsch in Angriffsstaerke bekannt.",
+    "quelle": "https://www.euronews.com/my-europe/2026/09/16/belarus-concentrates-forces-near-border-with-poland-and-lithuania-in-military-drill"
+   }
+  },
+  {
+   "id": "O2",
+   "name": "Uebungen RU/BY (Bereitschaftspruefungen, Zapad, nukleare Uebungen)",
+   "gewicht": 2,
+   "index": "eskalation",
+   "muster": [
+    "exercise",
+    "drill",
+    "snap",
+    "readiness",
+    "zapad",
+    "nuclear",
+    "uebung",
+    "manoever",
+    "cwiczen",
+    "pratyb"
+   ],
+   "akteure": [
+    "RU",
+    "BY"
+   ],
+   "schwellen": [
+    2,
+    5,
+    9,
+    15
+   ],
+   "kriterien": [
+    "keine",
+    "angekuendigte Routineuebungen",
+    "gehaeufte oder grenznahe Uebungen",
+    "unangekuendigte Grossuebung/Bereitschaftspruefung",
+    "Uebung mit nuklearer Komponente oder Uebergang in Aufmarsch"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-17",
+    "text": "Grenznahe Uebungen BY (Sept. 2026) im Raum Suwalki-Korridor. Ab Erstlauf durch Meldungen nachfuehren.",
+    "quelle": "https://www.euronews.com/my-europe/2026/09/16/belarus-concentrates-forces-near-border-with-poland-and-lithuania-in-military-drill"
+   }
+  },
+  {
+   "id": "O3",
+   "name": "NATO-Verstaerkung und Verlegungen (DE, UK, US, CA, PL, Nordics)",
+   "gewicht": 1,
+   "index": "verlegung",
+   "muster": [
+    "deploy",
+    "reinforce",
+    "rotation",
+    "arrive",
+    "brigade",
+    "battalion",
+    "efp",
+    "forward land forces",
+    "exercise",
+    "verleg",
+    "verstaerk",
+    "rotation",
+    "eintreff",
+    "brigade litauen",
+    "panzerbrigade 45",
+    "operation reassurance",
+    "cabrit",
+    "lynx"
+   ],
+   "akteure": [
+    "DE",
+    "UK",
+    "US",
+    "CA",
+    "PL",
+    "NATO",
+    "FR",
+    "NL",
+    "NO",
+    "SE",
+    "FI",
+    "DK",
+    "LT",
+    "LV",
+    "EE"
+   ],
+   "schwellen": [
+    4,
+    10,
+    18,
+    30
+   ],
+   "kriterien": [
+    "Routine",
+    "laufende Rotationen/Uebungen",
+    "gehaeufte Verlegungen, Grossuebungen",
+    "aussergewoehnliche Schnellverlegungen",
+    "Verstaerkung in Kriegsstaerke / NATO-Verteidigungsplaene aktiviert"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-17",
+    "text": "Panzerbrigade 45 Litauen im Aufbau (Einsatzbereitschaft 2027 geplant), Grossuebung Freedom Shield 2026; strukturelle Verstaerkung, Abschreckung.",
+    "quelle": "https://www.bundeswehr.de/de/organisation/heer/aktuelles/freedom-shield-2026-gefechtsuebung-litauen"
+   }
+  },
+  {
+   "id": "O4",
+   "name": "Grenz- und Luftraumvorfaelle (Drohnen, Ballone, Verletzungen, Grenzschliessung)",
+   "gewicht": 3,
+   "index": "eskalation",
+   "muster": [
+    "airspace",
+    "violation",
+    "incursion",
+    "drone",
+    "uav",
+    "balloon",
+    "border closed",
+    "closes border",
+    "shot down",
+    "air alert",
+    "luftraum",
+    "verletz",
+    "drohne",
+    "ballon",
+    "grenze geschlossen",
+    "abgeschossen",
+    "luftalarm",
+    "naruszen",
+    "przestrzen powietrz",
+    "balon"
+   ],
+   "akteure": [],
+   "schwellen": [
+    3,
+    7,
+    12,
+    20
+   ],
+   "kriterien": [
+    "keine",
+    "Einzelvorfaelle",
+    "wiederholte Vorfaelle, Proteste, Luftalarm",
+    "Abschuesse, Flughafen- oder Grenzschliessungen",
+    "bewaffneter Zwischenfall mit Personen- oder Sachschaden"
+   ],
+   "basis": {
+    "stufe": 3,
+    "stand": "2026-11-17",
+    "text": "Serie von Drohnenvorfaellen 2026 in LT/LV/EE/FI; 15.09.2026 russische Drohne bei Kaunas durch NATO-Eurofighter abgeschossen; 11.11.2026 Luftalarme und Schliessung Flughaefen Vilnius/Kaunas (Zusammenhang ukrainischer Angriff Ust-Luga). Schmuggelballone aus Belarus wiederkehrend.",
+    "quelle": "https://en.wikipedia.org/wiki/2026_drone_incursions_into_the_Baltic_states_and_Finland"
+   }
+  },
+  {
+   "id": "O5",
+   "name": "Ostsee: Kabel/Pipelines, Schattenflotte, Marinezwischenfaelle",
+   "gewicht": 2,
+   "index": "eskalation",
+   "muster": [
+    "cable",
+    "pipeline",
+    "anchor",
+    "shadow fleet",
+    "tanker",
+    "warship",
+    "submarine",
+    "frigate",
+    "boarding",
+    "kabel",
+    "anker",
+    "schattenflotte",
+    "kriegsschiff",
+    "u-boot",
+    "sabotage"
+   ],
+   "akteure": [],
+   "schwellen": [
+    3,
+    6,
+    10,
+    16
+   ],
+   "kriterien": [
+    "keine",
+    "Einzelmeldungen",
+    "gehaeufte Vorfaelle/Ermittlungen",
+    "bestaetigte Sabotage an kritischer Infrastruktur",
+    "Gefecht/Blockade auf See"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-17",
+    "text": "Anhaltende Vorfaelle mit Schattenflotte und Unterseekabeln seit 2024; NATO Baltic Sentry aktiv.",
+    "quelle": "https://en.wikipedia.org/wiki/C-Lion1"
+   }
+  },
+  {
+   "id": "O6",
+   "name": "Luftraum und Elektronik: GNSS-Stoerungen, Luftraumsperren, Militaerflugaufkommen",
+   "gewicht": 1,
+   "index": "eskalation",
+   "muster": [
+    "gps",
+    "gnss",
+    "jamming",
+    "spoofing",
+    "notam",
+    "airspace closed",
+    "restricted",
+    "stoersender",
+    "stoerung",
+    "luftraum gesperrt"
+   ],
+   "akteure": [],
+   "schwellen": [
+    3,
+    6,
+    10,
+    16
+   ],
+   "kriterien": [
+    "normal",
+    "bekannte Dauerstoerungen",
+    "ausgeweitete Stoerungen/Sperrgebiete",
+    "grossflaechige Sperrungen, starkes Militaerflugaufkommen",
+    "Luftraum geschlossen"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-17",
+    "text": "GNSS-Stoerungen im Ostseeraum (Kaliningrad, St. Petersburg) seit 2023 Dauerzustand.",
+    "quelle": "https://defence-blog.com/gps-jamming-hits-almost-all-of-natos-eastern-flank-in-one-day/"
+   }
+  },
+  {
+   "id": "O7",
+   "name": "Kaliningrad: Transit, Blockade, Drohungen, Stationierung",
+   "gewicht": 2,
+   "index": "eskalation",
+   "muster": [
+    "kaliningrad",
+    "transit",
+    "blockade",
+    "isolate",
+    "suwalki",
+    "nuclear",
+    "iskander",
+    "oreshnik",
+    "krolewiec"
+   ],
+   "akteure": [],
+   "schwellen": [
+    3,
+    6,
+    10,
+    16
+   ],
+   "kriterien": [
+    "ruhig",
+    "Rhetorik",
+    "wiederholte Drohungen, Transitstreit",
+    "konkrete Massnahmen (Transitsperre, Stationierung)",
+    "militaerische Durchsetzung/Korridorversuch"
+   ],
+   "basis": {
+    "stufe": 2,
+    "stand": "2026-11-17",
+    "text": "01.10.2026 Putin: bei Angriff auf Kaliningrad alle Waffen auf dem Tisch; 06.10.2026 Kreml zu litauischer Debatte ueber Nuklearwaffen-Stationierungsverbot.",
+    "quelle": "https://www.chathamhouse.org/2026/10/russias-kaliningrad-threats-show-value-baltic-preparedness"
+   }
+  },
+  {
+   "id": "O8",
+   "name": "Formelle Signale (NATO Art. 4 durch Ostflanken-Staat, Mobilmachung, Ausnahmezustand)",
+   "gewicht": 3,
+   "index": "eskalation",
+   "formell": true,
+   "muster": [
+    "article 4",
+    "artikel 4",
+    "art. 4",
+    "article 5",
+    "artikel 5",
+    "mobilization",
+    "mobilisation",
+    "mobilmachung",
+    "state of emergency",
+    "ausnahmezustand",
+    "martial law",
+    "kriegsrecht",
+    "mobilizac"
+   ],
+   "akteure": [],
+   "schwellen": [
+    1,
+    3,
+    6,
+    10
+   ],
+   "kriterien": [
+    "keine",
+    "Debatte",
+    "formeller Antrag in Vorbereitung",
+    "Art. 4 beantragt / Teilmobilmachung / Ausnahmezustand Grenzregion",
+    "Art. 5 / Generalmobilmachung"
+   ],
+   "basis": {
+    "stufe": 0,
+    "stand": "2026-11-17",
+    "text": "Kein formeller Schritt bekannt (manuell pruefen).",
+    "quelle": ""
+   }
+  }
  ],
  "spannungsfall_verknuepfung": {
   "_hinweis": "Ostflanken-Indikatoren heben die Spannungsfall-Indikatoren an (effektive Stufe = max). Formelle Ausloeser D* nie automatisch, nur Pruefhinweis.",
-  "C3": ["O4", "O5", "O6"],
-  "C4": ["O1", "O2", "O7"],
-  "A5": ["O3"],
-  "pruef_D1": ["O8"]
+  "C3": [
+   "O4",
+   "O5",
+   "O6"
+  ],
+  "C4": [
+   "O1",
+   "O2",
+   "O7"
+  ],
+  "A5": [
+   "O3"
+  ],
+  "pruef_D1": [
+   "O8"
+  ]
  },
  "flugzeugtypen": {
-  "tanker": ["K35R", "K35E", "KC46", "KC10", "A332", "MRTT", "A310"],
-  "awacs": ["E3TF", "E3CF", "E737", "E7", "E2", "SAAB", "GLEX"],
-  "aufklaerung": ["R135", "P8", "E6", "E8", "Q4", "GLF5", "U2", "EP3", "P3", "CL60", "BE20", "B350", "DH8"],
-  "transport": ["C17", "C130", "C30J", "A400", "C5M", "C5", "KC39", "C27J", "C295", "CN35", "IL76", "AN12", "AN26"],
-  "kampf": ["F16", "F35", "EUFI", "F18", "F15", "RFAL", "JS39", "TOR", "SU27", "SU30", "SU35", "MG29", "SU24", "SU34"],
-  "heli": ["H60", "NH90", "CH47", "H47", "EC35", "AS32", "EH10", "MI8", "MI17", "AH64"]
+  "tanker": [
+   "K35R",
+   "K35E",
+   "KC46",
+   "KC10",
+   "A332",
+   "MRTT",
+   "A310"
+  ],
+  "awacs": [
+   "E3TF",
+   "E3CF",
+   "E737",
+   "E7",
+   "E2",
+   "SAAB",
+   "GLEX"
+  ],
+  "aufklaerung": [
+   "R135",
+   "P8",
+   "E6",
+   "E8",
+   "Q4",
+   "GLF5",
+   "U2",
+   "EP3",
+   "P3",
+   "CL60",
+   "BE20",
+   "B350",
+   "DH8"
+  ],
+  "transport": [
+   "C17",
+   "C130",
+   "C30J",
+   "A400",
+   "C5M",
+   "C5",
+   "KC39",
+   "C27J",
+   "C295",
+   "CN35",
+   "IL76",
+   "AN12",
+   "AN26"
+  ],
+  "kampf": [
+   "F16",
+   "F35",
+   "EUFI",
+   "F18",
+   "F15",
+   "RFAL",
+   "JS39",
+   "TOR",
+   "SU27",
+   "SU30",
+   "SU35",
+   "MG29",
+   "SU24",
+   "SU34"
+  ],
+  "heli": [
+   "H60",
+   "NH90",
+   "CH47",
+   "H47",
+   "EC35",
+   "AS32",
+   "EH10",
+   "MI8",
+   "MI17",
+   "AH64"
+  ]
  },
- "notam_orte": ["EYVL", "EVRR", "EETT", "EPWW", "UMMV", "UMKK", "EYVI", "EYKA", "EYPA", "EYSA", "EVRA", "EETN", "EPSY", "EPGD", "UMMS"]
+ "notam_orte": [
+  "EYVL",
+  "EVRR",
+  "EETT",
+  "EPWW",
+  "UMMV",
+  "UMKK",
+  "EYVI",
+  "EYKA",
+  "EYPA",
+  "EYSA",
+  "EVRA",
+  "EETN",
+  "EPSY",
+  "EPGD",
+  "UMMS"
+ ],
+ "_hinweis_kalibrierung": "2026-11-17: nach Live-Diagnose PL-Quellen auf region=true, 'granic' entfernt (traf jede Grenzschutz-Meldung), je Quelle max. 3 Ereignisse pro Indikator und 7 Tage."
 }

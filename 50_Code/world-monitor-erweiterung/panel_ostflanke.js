@@ -62,8 +62,8 @@
     const box = el.querySelector(".karte"); if (!box || !window.L) return;
     if (!karte || karte._container !== box) {
       karte = L.map(box, { zoomControl: true, attributionControl: true }).setView([55.2, 23.5], 5);
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", { maxZoom: 10, subdomains: "abcd",
-        attribution: "© OpenStreetMap © CARTO" }).addTo(karte);
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 10,
+        attribution: "Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors" }).addTo(karte);
       // Suwalki-Korridor (schematisch: Grenze PL-LT zwischen Kaliningrad und Belarus)
       L.polygon([[54.42, 22.70], [54.40, 23.10], [53.92, 23.55], [53.88, 23.30]], { color: "#e3b341", weight: 1, fillOpacity: .15 })
         .bindTooltip("Suwalki-Korridor (schematisch)").addTo(karte);
