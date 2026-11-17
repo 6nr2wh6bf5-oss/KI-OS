@@ -1373,7 +1373,26 @@
     "stand": "2026-11-17",
     "text": "Serie von Drohnenvorfaellen 2026 in LT/LV/EE/FI; 15.09.2026 russische Drohne bei Kaunas durch NATO-Eurofighter abgeschossen; 11.11.2026 Luftalarme und Schliessung Flughaefen Vilnius/Kaunas (Zusammenhang ukrainischer Angriff Ust-Luga). Schmuggelballone aus Belarus wiederkehrend.",
     "quelle": "https://en.wikipedia.org/wiki/2026_drone_incursions_into_the_Baltic_states_and_Finland"
-   }
+   },
+   "ausschluss": [
+    "buys",
+    "purchase",
+    "procure",
+    "contract",
+    " order",
+    "boost",
+    "investment",
+    "funding",
+    "budget",
+    "kauft",
+    "beschaff",
+    "auftrag",
+    "bestell",
+    "milliard",
+    "million",
+    "zakup",
+    "umow"
+   ]
   },
   {
    "id": "O5",
@@ -1416,7 +1435,26 @@
     "stand": "2026-11-17",
     "text": "Anhaltende Vorfaelle mit Schattenflotte und Unterseekabeln seit 2024; NATO Baltic Sentry aktiv.",
     "quelle": "https://en.wikipedia.org/wiki/C-Lion1"
-   }
+   },
+   "ausschluss": [
+    "buys",
+    "purchase",
+    "procure",
+    "contract",
+    " order",
+    "boost",
+    "investment",
+    "funding",
+    "budget",
+    "kauft",
+    "beschaff",
+    "auftrag",
+    "bestell",
+    "milliard",
+    "million",
+    "zakup",
+    "umow"
+   ]
   },
   {
    "id": "O6",
@@ -1454,7 +1492,26 @@
     "stand": "2026-11-17",
     "text": "GNSS-Stoerungen im Ostseeraum (Kaliningrad, St. Petersburg) seit 2023 Dauerzustand.",
     "quelle": "https://defence-blog.com/gps-jamming-hits-almost-all-of-natos-eastern-flank-in-one-day/"
-   }
+   },
+   "ausschluss": [
+    "buys",
+    "purchase",
+    "procure",
+    "contract",
+    " order",
+    "boost",
+    "investment",
+    "funding",
+    "budget",
+    "kauft",
+    "beschaff",
+    "auftrag",
+    "bestell",
+    "milliard",
+    "million",
+    "zakup",
+    "umow"
+   ]
   },
   {
    "id": "O7",

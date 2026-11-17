@@ -282,15 +282,18 @@ def buendeln(meldungen: list[dict], tage: int = 14) -> list[dict]:
             gleiche_menge = bool(set(m["wie_viel"]) & set(e["wie_viel"]))
             gleicher_akteur = bool(set(m["wer"]) & set(e["wer"]))
             gleicher_ort = bool(orte_m & e["_orte"])
-            if jac >= 0.45 or (jac >= 0.2 and gleicher_ort) or (gleiche_menge and gleicher_akteur and (gleicher_ort or jac >= 0.15)):
+            gleiches_land = bool({w["id"] for w in m["wohin"]} & e["_alle_orte"])
+            if jac >= 0.45 or (jac >= 0.2 and gleicher_ort) or (jac >= 0.3 and gleiches_land and gleicher_akteur) or (gleiche_menge and gleicher_akteur and (gleicher_ort or jac >= 0.15)):
                 ziel = e
                 break
         if ziel is None:
             ziel = dict(m, quellen=[], _tok=set(tok), _ort=ort,
-                        _orte={w["id"] for w in m["wohin"] if w["art"] not in ("land", "see")})
+                        _orte={w["id"] for w in m["wohin"] if w["art"] not in ("land", "see")},
+                        _alle_orte={w["id"] for w in m["wohin"]})
             ereignisse.append(ziel)
         else:
             ziel["_tok"] |= tok
+            ziel["_alle_orte"] |= {w["id"] for w in m["wohin"]}
             ziel["_orte"] |= {w["id"] for w in m["wohin"] if w["art"] not in ("land", "see")}
             for f in ("wer", "was", "wie_viel"):
                 ziel[f] = list(dict.fromkeys(ziel[f] + m[f]))
@@ -322,6 +325,7 @@ def buendeln(meldungen: list[dict], tage: int = 14) -> list[dict]:
         e.pop("_tok", None)
         e.pop("_ort", None)
         e.pop("_orte", None)
+        e.pop("_alle_orte", None)
         e["quellen"] = e["quellen"][:5]
         out.append(e)
     return out
@@ -520,7 +524,7 @@ def bewerte(kat: dict, ereignisse: list[dict], tech_b: dict, hist: list[dict]) -
             if (_parse_zeit(e["zeit"]) or now_utc()) < grenze:
                 continue
             t = norm(e["titel"])
-            if not _hat(t, ind["muster"]):
+            if not _hat(t, ind["muster"]) or _hat(t, ind.get("ausschluss", [])):
                 continue
             if ind.get("akteure") and not set(ind["akteure"]) & set(e["wer"]):
                 continue
