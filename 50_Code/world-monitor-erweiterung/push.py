@@ -53,7 +53,7 @@ def kritisch(k: dict) -> bool:
         return True
     if k.get("stufe", 0) >= 5 and _aussage_ok(k.get("aussagekraft", 0)):
         return True
-    if k.get("modul") in ("energie", "spannungsfall") and (k.get("stufe", 0) >= 4 or k.get("sprung", 0) >= 2):
+    if k.get("modul") in ("energie", "spannungsfall", "ostflanke") and (k.get("stufe", 0) >= 4 or k.get("sprung", 0) >= 2):
         return True
     return False
 
@@ -82,7 +82,7 @@ def kandidaten_aus_fruehwarnung(anomalien: list[dict], seit: dict, jetzt: dateti
     Die Aussagekraft kennt als hoechste Kategorie «hoch»; nur diese zaehlt und gilt hier als «sehr hoch»."""
     out, aktiv = [], set()
     for a in anomalien or []:
-        if a.get("kat") != "konvergenz" or a.get("stufe") != "stark" or a.get("filter"):
+        if a.get("kat") != "konvergenz" or a.get("stufe") != "stark" or a.get("filter") or a.get("kein_push"):
             continue
         if (a.get("aussagekraft") or {}).get("stufe") != "hoch":
             continue
@@ -153,12 +153,16 @@ def pruefen(kandidaten: list[dict], jetzt: datetime | None = None, dry_run: bool
 
 
 def lauf(anomalien: list[dict] | None, energie_state: dict, spannung_state: dict, jetzt: datetime | None = None,
-         dry_run: bool = False, log_datei: str | None = None, zustand_datei: str | None = None) -> list[dict]:
+         dry_run: bool = False, log_datei: str | None = None, zustand_datei: str | None = None,
+         ostflanke_state: dict | None = None) -> list[dict]:
     """Ein Pruefdurchgang: Kandidaten bilden, senden, Stufen und Beobachtungszeiten merken."""
     jetzt = jetzt or datetime.now()
     z = load_json(zustand_datei or VORHER_FILE, {})
     module = kandidaten_aus_modulen(energie_state, spannung_state, z)
     kandidaten = list(module)
+    if ostflanke_state:  # Ostflanken-Alarm: liefert nur Kandidaten, wenn config ostflanke.push_aktiv = true
+        import ostflanke
+        kandidaten += ostflanke.push_kandidaten(ostflanke_state, z.get("ostflanke"))
     if anomalien is not None:
         seit = z.setdefault("fruehwarn_seit", {})
         dauer = load_json(CONFIG_FILE, {}).get("push", {}).get("fruehwarn_min_dauer_min", 60)
@@ -172,6 +176,8 @@ def lauf(anomalien: list[dict] | None, energie_state: dict, spannung_state: dict
         k = next((x for x in module if x.get("modul") == mod), None)
         if not (k and kritisch(k) and not _gesperrt(log, k["id"], jetzt)):
             z[mod] = s["stufe"]
+    if ostflanke_state:
+        z["ostflanke"] = ostflanke_state.get("stufe", 1)
     if not dry_run or zustand_datei:
         os.makedirs(DATA_DIR, exist_ok=True)
         save_json(zustand_datei or VORHER_FILE, z)
