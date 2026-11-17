@@ -22,7 +22,7 @@ Stand 2026-11-17. Offline mit Mock-Daten getestet (Python 3, nur Standardbibliot
    - Route `GET /api/ostflanke` -> `ostflanke.get_state()` (gzip, ohne interne Felder).
    - AIS: im bestehenden aisstream-Teil alle paar Minuten `ostflanke.ais_einspeisen([{mmsi, name, typ, lat, lon}, ...])` aufrufen (typ = AIS-Schiffstyp, 35 = Militär).
    - Frühwarnung: `ostflanke.fruehwarnung_signale()` anhängen (Feld `prioritaet: 1` -> oben einsortieren); `ostflanke.konvergenz_anomalie()` in die Konvergenzliste (trägt `kein_push`, solange der Alarm nicht freigegeben ist).
-   - Push: `push.lauf(..., ostflanke_state=ostflanke.get_state())`. Ohne `"ostflanke": {"push_aktiv": true}` in config.json entstehen **keine** Ostflanken-Meldungen.
+   - Push: `push.lauf(..., ostflanke_state=ostflanke.get_state())`. **Freigegeben am 17.11.2026 (Variante «ab Stufe 4 oder Sprung um 2»):** in config.json `"ostflanke": {"push_aktiv": true}` setzen. Es gelten die bestehenden Limits (max. 3/Tag, gleiche Meldung 1x/7 Tage, 23-7 Uhr nur Stufe 5); offiziell bestätigte formelle Schritte (Art. 4/5, Mobilmachung) immer.
 4. Optional config.json: `"icao_api_key": "..."` (NOTAMs, ICAO API Data Service; Abruf alle 12 h, `ostflanke.notam_intervall_h`). Ohne Schlüssel: Datenlücke angezeigt.
 5. Lage 10:00/22:00: `ostflanke.lage_kontext()` **vor** allen anderen Abschnitten in den Prompt, plus `ostflanke.LAGE_ANWEISUNG`. Jarvis-Tool `ostflanke` -> `lage_kontext()`.
 6. `index.html`: Desktop neuer Reiter/Tab «Ostflanke» mit `<div id="panel-ostflanke">`, Handy neuer Tab «Ostflanke» als **erster** Tab. Script `panel_ostflanke.js` einbinden. Leaflet wird nachgeladen, falls die Seite es nicht schon hat (Kacheln CARTO dark).
