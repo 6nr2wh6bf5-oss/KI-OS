@@ -515,6 +515,22 @@ def _vorwochen(hist: list[dict], key: str) -> float | None:
     return sum(werte) / len(werte) if len(werte) >= 2 else None
 
 
+def relevanz(e: dict, kat: dict) -> list[str]:
+    """Indikatoren, zu denen das Ereignis passt. Leere Liste = kein Bezug zu Eskalation, Bedrohung oder
+    Truppenbewegung -> wird aussortiert und nicht angezeigt (Wunsch Nutzer 18.11.2026)."""
+    t = norm(e["titel"] + " " + " ".join(str(x) for x in (e.get("was_llm") or "",)))
+    if _hat(t, kat.get("irrelevant_muster", [])) and not _hat(t, kat.get("vorfall_muster", [])):
+        return []
+    out = []
+    for ind in kat["indikatoren"]:
+        if not _hat(t, ind["muster"]) or _hat(t, ind.get("ausschluss", [])):
+            continue
+        if ind.get("akteure") and not set(ind["akteure"]) & set(e["wer"]):
+            continue
+        out.append(ind["id"])
+    return out
+
+
 def bewerte(kat: dict, ereignisse: list[dict], tech_b: dict, hist: list[dict]) -> list[dict]:
     grenze = now_utc() - timedelta(days=7)
     res = []
@@ -673,6 +689,12 @@ def update(force: bool = False, news_items: list[dict] | None = None, llm_fn=Non
     cache = alt.get("_llm_cache", {})
     if llm_fn:
         _llm_anreichern(ereignisse, llm_fn, cache)
+    for e in ereignisse:
+        e["relevanz"] = relevanz(e, kat)
+    g7 = now_utc() - timedelta(days=7)
+    ausgeblendet = [e for e in ereignisse if not e["relevanz"]]
+    ereignisse = [e for e in ereignisse if e["relevanz"]]
+    ausgeblendet_7t = sum(1 for e in ausgeblendet if (_parse_zeit(e["zeit"]) or now_utc()) >= g7)
     tech_b = {"adsb": adsb_bewertung(tech), "notam": notam_bewertung(tech), "ais": ais_bewertung(tech)}
     hist = alt.get("verlauf", [])
     inds = bewerte(kat, ereignisse, tech_b, hist)
@@ -693,7 +715,7 @@ def update(force: bool = False, news_items: list[dict] | None = None, llm_fn=Non
     state = {
         "modul": "ostflanke", "aktualisiert": iso(now_utc()), "prioritaet": 1, **g,
         "trend_7t": {"eskalation": trend(hist, "eskalation"), "verlegung": trend(hist, "verlegung")},
-        "konvergenz": konv, "indikatoren": inds, "ereignisse": ereignisse[:150],
+        "konvergenz": konv, "indikatoren": inds, "ereignisse": ereignisse[:150], "ausgeblendet_7t": ausgeblendet_7t,
         "technik": tech, "technik_bewertung": tech_b, "verlauf": hist, "veraenderungen": log[-200:],
         "diagnose": diagnose, "datenluecken": [k for k, v in tech_b.items() if not v.get("ok")],
         "orte": [{k: o[k] for k in ("id", "name", "lat", "lon", "art")} for o in kat["orte"]],

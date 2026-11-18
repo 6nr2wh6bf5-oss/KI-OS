@@ -120,6 +120,7 @@
       <div class="karte"></div>
       <div class="mut">Rot = RU/BY beteiligt, blau = NATO/Partner · durchgezogen = bestätigt, gestrichelt = unbestätigt · kleine Punkte = Militärflugzeuge mit Transponder</div>
       <h4>BEWEGUNGEN, VERLEGUNGEN, VORFÄLLE (14 TAGE)</h4>
+      ${s.ausgeblendet_7t ? `<div class="mut">${s.ausgeblendet_7t} Meldungen der letzten 7 Tage ohne Bezug zu Eskalation, Bedrohung oder Truppenbewegung ausgeblendet</div>` : ""}
       <div class="filter">${[["alle", "Alle"], ["rub", "RU/BY"], ["nato", "NATO/Partner"], ["best", "nur bestätigt"]].map(([id, t]) => `<button data-f="${id}" class="${filter === id ? "an" : ""}">${t}</button>`).join("")}</div>
       <div class="tw"><table><tr><th>Zeit</th><th>Wer</th><th>Was</th><th>Wie viel</th><th>Wohin</th><th>Status</th><th class="hide-m">Meldung / Quelle</th></tr>${rows || '<tr><td colspan="7" class="mut">keine Meldungen</td></tr>'}</table></div>${karten}
       <h4>INDIKATOREN</h4><table>${inds}</table>
