@@ -22,7 +22,9 @@
   .wmx tr.open+tr .det{display:block}
   .wmx .mut{color:#7d93a3;font-size:11px}.wmx .warn{color:#f0883e}
   .wmx svg{width:100%;height:46px;display:block}
-  .wmx ul{margin:4px 0 0;padding-left:16px}`;
+  .wmx ul{margin:4px 0 0;padding-left:16px}
+  .wmx td:nth-child(-n+2){text-align:left;white-space:normal}.wmx td[colspan]{text-align:left;white-space:normal}
+  @media (max-width:640px){.wmx td:nth-child(n+3){white-space:normal}.wmx td:nth-child(3){min-width:70px}}`;
   const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
 
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -56,13 +58,19 @@
     Object.keys(kat).forEach(k => {
       rows += `<tr class="k"><td colspan="4">${esc(kat[k])} · ${Math.round((s.kategorien || {})[k] || 0)}</td></tr>`;
       s.indikatoren.filter(i => i.kategorie === k).forEach(i => {
-        rows += `<tr class="r"><td>${esc(i.id)}</td><td>${esc(i.name)}${i.anomalie ? ' <span class="warn">▲ Anomalie</span>' : ""}${i.pruefhinweis ? ' <span class="warn">⚑ prüfen</span>' : ""}</td>
+        rows += `<tr class="r"><td>${esc(i.id)}</td><td>${esc(i.name)}${i.stufe_aus === "Ostflanke" ? ' <span class="warn">◆ Ostflanke</span>' : ""}${i.anomalie ? ' <span class="warn">▲ Anomalie</span>' : ""}${i.pruefhinweis ? ' <span class="warn">⚑ prüfen</span>' : ""}</td>
           <td>${dots(i.stufe)}</td><td title="Trend 30 Tage">${i.trend_30t || "→"}</td></tr>
           <tr><td></td><td colspan="3"><div class="det"><b>${esc(i.kriterium)}</b><br>${esc(i.text)}<br>
           <span class="mut">Basis ${i.basis_stufe} · Meldungen ${i.news_stufe} (${i.meldungen_7t}/7T${i.vorwochen_mittel != null ? ", Ø Vorwochen " + i.vorwochen_mittel : ""}) · Stand ${esc(i.stand)}${i.veraltet ? ' <span class="warn">Bewertung veraltet</span>' : ""}<br>Quelle: ${/^https?:/.test(i.quelle) ? `<a href="${esc(i.quelle)}" target="_blank" rel="noopener">Link</a>` : esc(i.quelle)}</span>
-          ${i.pruefhinweis ? `<div class="warn">${esc(i.pruefhinweis)}</div>` : ""}${bsp(i.beispiele)}</div></td></tr>`;
+          ${i.extern_text ? `<div>↳ ${esc(i.extern_text)}</div>` : ""}${i.pruefhinweis ? `<div class="warn">${esc(i.pruefhinweis)}</div>` : ""}${bsp(i.beispiele)}</div></td></tr>`;
       });
     });
+    const fo = (s.folgen || {}).stufen || [];
+    const folgen = fo.length ? `<details style="margin-top:8px"><summary class="mut" style="cursor:pointer">FOLGEN FÜR DIE BEVÖLKERUNG (bei formellen Auslösern)</summary>
+      <div class="mut">${esc((s.folgen || {}).kette || "")}</div>
+      ${fo.map(f => `<div style="margin-top:6px"><b${f.aktiv ? ' class="warn"' : ""}>${f.aktiv ? "AKTIV · " : ""}${esc(f.titel)}</b><div class="mut">${esc(f.voraussetzung)}</div>
+      <ul>${f.folgen.map(x => `<li><b>${esc(x.bereich)}:</b> ${esc(x.text)} <span class="mut">(${esc(x.fundstelle)}${x.pruefen ? ", Stand prüfen" : ""})</span></li>`).join("")}</ul></div>`).join("")}
+      <div class="mut">${esc((s.folgen || {})._hinweis || "")}</div></details>` : "";
     const ev = (s.ereignisse || []).slice(-6).reverse().map(e => `<li>${esc(e.datum)}: ${esc(e.text || `${e.name} Stufe ${e.von} → ${e.nach} (${e.grund})`)}</li>`).join("");
     el.innerHTML = `<div class="wmx"><h3>SPANNUNGSFALL DE · AUFRÜSTUNG NATO ${badge(s.stufe)}</h3>
       <div class="mut">${esc(s.stufe_text)} · Grund: ${esc(s.stufe_grund)}</div>
@@ -70,6 +78,7 @@
       ${spark(s.verlauf, ["eskalation", "aufruestung"], ["#f0883e", "#5fd4ff"])}
       <table>${rows}</table>
       ${ev ? `<div class="mut" style="margin-top:8px">VERÄNDERUNGEN</div><ul>${ev}</ul>` : ""}
+      ${folgen}
       <div class="mut" style="margin-top:6px">Basisbewertung ${esc(s.katalog_bewertet_am)} · aktualisiert ${esc((s.aktualisiert || "").replace("T", " ").slice(0, 16))} UTC${(s.veraltete_bewertungen || []).length ? ' · <span class="warn">veraltet: ' + s.veraltete_bewertungen.join(", ") + "</span>" : ""}<br>
       Aufrüstung allein ist Abschreckung, kein Kriegsindikator. Formelle Auslöser (Art. 80a/115a GG, NATO Art. 5) werden nur manuell gesetzt.</div></div>`;
     toggle(el);

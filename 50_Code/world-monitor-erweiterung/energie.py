@@ -42,12 +42,15 @@ P_AUSFALL = ["stromausfall", "blackout", "netzstoerung", "ohne strom", "stromnet
 P_GROSS = ["grossflaechig", "tausende haushalte", "zehntausende", "landesweit", "flaechendeckend",
            "mehrere tage", "katastrophenfall", "grossschadenslage", "nationwide", "millions without power",
            "hunderttausend"]
+# Nur ausdrueckliche Sabotage-/Anschlagsbegriffe; "Umspannwerk", "Strommast" allein sind meist Brand/Unfall
 P_SABOTAGE = ["brandanschlag", "sabotage", "anschlag auf strom", "anschlag auf das stromnetz",
-              "kabelschacht", "strommast", "umspannwerk", "pipeline beschaedigt", "seekabel",
+              "anschlag auf umspannwerk", "anschlag auf ein umspannwerk", "pipeline beschaedigt", "seekabel beschaedigt",
               "attack on power grid", "sabotage pipeline"]
 P_MANGEL = ["gasmangel", "strommangel", "lastabwurf", "rationierung", "kontingentierung", "ostral",
             "alarmstufe gas", "notfallstufe gas", "fruehwarnstufe gas", "netzreserve",
             "gas shortage", "rolling blackouts"]
+# Grossausfaelle ausserhalb DE/CH (Kriegsgebiete), die in deutschsprachigen Meldungen auftauchen
+P_AUSLAND = ["ukrain", "kiew", "kyiv", "charkiw", "odessa", "russland", "gaza", "israel", "iran", "libanon", "kuba"]
 P_AUSSCHLUSS = ["uebung", "probealarm", "film", "serie", "roman", "videospiel", "hoerspiel", "simulation"]
 
 GEWICHTE = {
@@ -152,7 +155,8 @@ def ind_strompreis() -> dict:
 def ind_frequenz() -> dict:
     q = "energy-charts.info Netzfrequenz"
     try:
-        j = http_json("https://api.energy-charts.info/frequency?region=DE")
+        # region=DE liefert 404; Standard-Messpunkt DE-Freiburg (Verbundnetz, gleiche Frequenz). Feld "data", 1 Wert/s
+        j = http_json("https://api.energy-charts.info/frequency", timeout=40)
         f = _ec_series(j, ("data", "frequency"))
         f = [x for x in f if 45 < x < 55][-3600:]
         if not f:
@@ -189,11 +193,16 @@ def ind_speicher_ch() -> dict:
                if datetime.strptime(r[c_dat][:10], "%Y-%m-%d").isocalendar()[1] == kw
                and d.year - 5 <= int(r[c_dat][:4]) < d.year]
         ist = pct(last)
+        alter = (datetime.now() - d).days
         mittel = sum(vgl) / len(vgl) if vgl else ist
         defizit = mittel - ist
         st = stufe_aus_schwellen(defizit, [5, 10, 15, 25])
-        return _ind("speicher_ch", "Speicherseen Schweiz", st, round(ist, 1), "%",
-                    f"{ist:.1f} % ({last[c_dat][:10]}), Mittel 5 Jahre KW{kw}: {mittel:.1f} %", q)
+        txt = f"{ist:.1f} % ({last[c_dat][:10]}), Mittel 5 Jahre KW{kw}: {mittel:.1f} %"
+        if alter > 45:  # BFE-Datei nicht nachgefuehrt: Wert nicht mehr werten
+            return {**_ind("speicher_ch", "Speicherseen Schweiz", 0, round(ist, 1), "%", txt + f" – Daten {alter} Tage alt", q), "ok": False}
+        if alter > 14:
+            txt += f" – Daten {alter} Tage alt (BFE-Datei nicht nachgeführt)"
+        return _ind("speicher_ch", "Speicherseen Schweiz", st, round(ist, 1), "%", txt, q)
     except Exception as e:  # noqa: BLE001
         return _fehler("speicher_ch", "Speicherseen Schweiz", q, e)
 
@@ -214,21 +223,23 @@ def ind_news(items: list[dict]) -> list[dict]:
     res = []
     n, t = count_recent(items, P_AUSFALL, 7, P_AUSSCHLUSS)
     t_de = [x for x in t if x.get("suchbegriff") not in NEWS_EN]
-    gross = [x for x in t_de if match_any(x["titel"], P_GROSS)]
-    st = max(stufe_aus_schwellen(len(t_de), [8, 15, 30, 60]), min(4, stufe_aus_schwellen(len(gross), [1, 3, 6, 10])))
+    gross = [x for x in t_de if match_any(x["titel"], P_GROSS) and not match_any(x["titel"], P_AUSLAND)]
+    # Anzahl allein saettigt (Google News max. ca. 100 je Suche; ~100 lokale Ausfaelle/Woche sind normal),
+    # massgeblich sind grossflaechige Ausfaelle
+    st = max(stufe_aus_schwellen(len(t_de), [150, 250, 400, 600]), min(4, stufe_aus_schwellen(len(gross), [3, 6, 10, 16])))
     res.append(_ind("ausfall_de_ch", "Stromausfälle DE/CH (Meldungen 7 T.)", st, len(t_de), "Meldungen",
                     f"{len(t_de)} Meldungen, davon {len(gross)} grossflaechig", "Google News",
                     ) | {"beispiele": t_de[:5]})
     t_eu = [x for x in t if x.get("suchbegriff") in NEWS_EN]
     gross_eu = [x for x in t_eu if match_any(x["titel"], P_GROSS)]
-    st = max(stufe_aus_schwellen(len(t_eu), [10, 20, 40, 80]), min(3, stufe_aus_schwellen(len(gross_eu), [1, 3, 6, 10])))
+    st = max(stufe_aus_schwellen(len(t_eu), [40, 70, 120, 200]), min(3, stufe_aus_schwellen(len(gross_eu), [3, 6, 10, 16])))
     res.append(_ind("ausfall_europa", "Stromausfälle Europa (Meldungen 7 T.)", st, len(t_eu), "Meldungen",
                     f"{len(t_eu)} Meldungen, davon {len(gross_eu)} grossflaechig", "Google News") | {"beispiele": t_eu[:5]})
     n, t = count_recent(items, P_SABOTAGE, 7, P_AUSSCHLUSS)
     res.append(_ind("sabotage", "Anschläge/Sabotage Energieanlagen", stufe_aus_schwellen(n, [2, 5, 10, 20]), n,
                     "Meldungen", f"{n} Meldungen in 7 Tagen", "Google News") | {"beispiele": t[:5]})
     n, t = count_recent(items, P_MANGEL, 7, P_AUSSCHLUSS)
-    res.append(_ind("mangel", "Mangel/Rationierung (Meldungen)", stufe_aus_schwellen(n, [3, 8, 15, 30]), n,
+    res.append(_ind("mangel", "Mangel/Rationierung (Meldungen)", stufe_aus_schwellen(n, [5, 12, 25, 45]), n,
                     "Meldungen", f"{n} Meldungen in 7 Tagen", "Google News") | {"beispiele": t[:5]})
     return res
 

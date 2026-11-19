@@ -1,0 +1,41 @@
+{
+ "_hinweis": "Überblick: Was bei formellen Auslösern rechtlich anwendbar wird und was das für die Bevölkerung in Deutschland bedeutet. Keine Rechtsauskunft; massgebend sind die Gesetzestexte (gesetze-im-internet.de) und die Anordnungen der Behörden. Stand 2026-11-17, Einträge mit 'pruefen' vor Verwendung nachlesen.",
+ "stand": "2026-11-17",
+ "kette": "Ostflanke (Vorfall/Aufmarsch) -> NATO Art. 4 Konsultationen (D1) -> NATO-Ratsbeschluss im Bündnisfall Art. 5 (D2) -> Art. 80a Abs. 3 GG Bündnisklausel (D3) oder Spannungsfall Art. 80a Abs. 1 GG (D4, Bundestag 2/3) -> Verteidigungsfall Art. 115a GG (D5)",
+ "stufen": [
+  {"ausloeser": ["D3", "D4"], "titel": "Spannungsfall bzw. Bündnisklausel (Art. 80a GG)",
+   "voraussetzung": "Art. 80a Abs. 1 GG: Feststellung durch den Bundestag mit 2/3-Mehrheit der abgegebenen Stimmen oder besondere Zustimmung; Art. 80a Abs. 3 GG: auch auf Beschluss eines Bündnisorgans (NATO-Rat) mit Zustimmung der Bundesregierung.",
+   "folgen": [
+    {"bereich": "Wehrpflicht", "text": "Aussetzung der Wehrpflicht endet: Pflichten nach dem Wehrpflichtgesetz gelten wieder (Einberufung möglich).", "fundstelle": "§ 2 WPflG", "pruefen": false},
+    {"bereich": "Ausreise wehrpflichtiger Männer", "text": "Genehmigungspflicht für Auslandsaufenthalte über 3 Monate (Männer 17-45). In Friedenszeiten seit April 2026 per Allgemeinverfügung freigestellt; im Spannungsfall voll wirksam.", "fundstelle": "§ 3 Abs. 2 WPflG; BAnz AT 16.04.2026", "pruefen": true},
+    {"bereich": "Arbeit", "text": "Dienstverpflichtung in lebens- und verteidigungswichtige Bereiche, Einschränkung des Rechts, den Arbeitsplatz aufzugeben.", "fundstelle": "Art. 12a Abs. 3 und 6 GG i.V.m. Art. 80a GG; Arbeitssicherstellungsgesetz", "pruefen": false},
+    {"bereich": "Lebensmittel", "text": "Bewirtschaftung und Rationierung von Lebensmitteln möglich (Bezugsscheine), Lenkung von Erzeugung und Verteilung.", "fundstelle": "Ernährungssicherstellungs- und -vorsorgegesetz (ESVG)", "pruefen": false},
+    {"bereich": "Wirtschaft, Treibstoff", "text": "Bewirtschaftung gewerblicher Güter (u.a. Mineralöl/Treibstoff), Liefer- und Produktionsvorgaben.", "fundstelle": "Wirtschaftssicherstellungsgesetz", "pruefen": false},
+    {"bereich": "Verkehr", "text": "Vorrang für Militär- und Versorgungstransporte (Strasse, Schiene, Luft, Wasser), Beschränkungen des Privatverkehrs, Inanspruchnahme von Verkehrsleistungen.", "fundstelle": "Verkehrssicherstellungsgesetz; Verkehrsleistungsgesetz", "pruefen": false},
+    {"bereich": "Telekommunikation, Post", "text": "Bevorrechtigung von Behörden und Streitkräften, mögliche Einschränkungen für Private.", "fundstelle": "Post- und Telekommunikationssicherstellungsgesetz", "pruefen": true},
+    {"bereich": "Eigentum", "text": "Inanspruchnahme von Fahrzeugen, Gebäuden, Grundstücken gegen Entschädigung.", "fundstelle": "Bundesleistungsgesetz", "pruefen": false},
+    {"bereich": "Wasser", "text": "Sicherstellung der Trinkwasserversorgung, Notbrunnen, Vorgaben an Versorger.", "fundstelle": "Wassersicherstellungsgesetz", "pruefen": false},
+    {"bereich": "Bundeswehr im Inland", "text": "Schutz ziviler Objekte und Verkehrsregelung durch die Streitkräfte, Kontrollen und Sperrungen sichtbar.", "fundstelle": "Art. 87a Abs. 3 GG", "pruefen": false}
+   ]},
+  {"ausloeser": ["D5"], "titel": "Verteidigungsfall (Art. 115a GG)",
+   "voraussetzung": "Feststellung durch Bundestag mit Zustimmung Bundesrat (2/3 der abgegebenen Stimmen, mindestens Mehrheit der Mitglieder); bei Angriff und fehlender Handlungsfähigkeit der Organe gilt sie als getroffen (Art. 115a Abs. 4 GG).",
+   "folgen": [
+    {"bereich": "Führung", "text": "Befehls- und Kommandogewalt geht auf den Bundeskanzler über.", "fundstelle": "Art. 115b GG", "pruefen": false},
+    {"bereich": "Gesetzgebung", "text": "Erweiterte Gesetzgebungskompetenz des Bundes; Gemeinsamer Ausschuss kann an Stelle von Bundestag/Bundesrat handeln.", "fundstelle": "Art. 115c, 115e GG", "pruefen": false},
+    {"bereich": "Dienstpflichten", "text": "Zusätzlich: Heranziehung von Frauen (18-55) zu zivilen Dienstleistungen im Sanitäts- und Heilwesen, wenn Freiwillige nicht ausreichen.", "fundstelle": "Art. 12a Abs. 4 GG", "pruefen": false},
+    {"bereich": "Wahlen", "text": "Wahlperioden enden frühestens 6 Monate nach Ende des Verteidigungsfalls.", "fundstelle": "Art. 115h GG", "pruefen": false}
+   ]},
+  {"ausloeser": ["EU"], "titel": "Europäische Union",
+   "voraussetzung": "Bewaffneter Angriff auf einen EU-Mitgliedstaat (z.B. Litauen, Polen).",
+   "folgen": [
+    {"bereich": "Beistand", "text": "Pflicht der Mitgliedstaaten zu Hilfe und Unterstützung mit allen in ihrer Macht stehenden Mitteln.", "fundstelle": "Art. 42 Abs. 7 EUV", "pruefen": false},
+    {"bereich": "Solidarität", "text": "Gegenseitige Unterstützung bei Terroranschlag oder Katastrophe, Mobilisierung der EU-Instrumente.", "fundstelle": "Art. 222 AEUV", "pruefen": false},
+    {"bereich": "Vorsorge Bevölkerung", "text": "Empfehlung an Haushalte, sich mindestens 72 Stunden selbst versorgen zu können.", "fundstelle": "EU-Strategie Preparedness Union (März 2025)", "pruefen": false}
+   ]},
+  {"ausloeser": ["CH"], "titel": "Bezug Schweiz",
+   "voraussetzung": "Keine direkte Rechtswirkung deutscher oder NATO-Beschlüsse in der Schweiz.",
+   "folgen": [
+    {"bereich": "Indirekt", "text": "Mögliche Folgen über Energie, Verkehr (Transit), Lieferketten und Grenzgänger; Entscheide von Bundesrat/Parlament massgebend.", "fundstelle": "keine (Einschätzung)", "pruefen": true}
+   ]}
+ ]
+}

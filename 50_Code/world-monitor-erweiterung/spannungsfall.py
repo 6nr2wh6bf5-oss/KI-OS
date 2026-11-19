@@ -25,6 +25,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.environ.get("WM_DATA_DIR", os.path.join(BASE, "data"))
 STATE_FILE = os.path.join(DATA_DIR, "spannungsfall_state.json")
 KATALOG_FILE = os.path.join(BASE, "spannungsfall_indikatoren.json")
+FOLGEN_FILE = os.path.join(BASE, "spannungsfall_folgen.json")
 
 GESAMT_TEXT = {
     1: "Normallage",
@@ -61,7 +62,9 @@ def _vorwochen_mittel(hist: list[dict], key: str) -> float | None:
     return sum(werte) / len(werte) if len(werte) >= 2 else None
 
 
-def bewerte(katalog: dict, items: list[dict], hist: list[dict]) -> list[dict]:
+def bewerte(katalog: dict, items: list[dict], hist: list[dict], extern: dict | None = None) -> list[dict]:
+    """extern = {Indikator-ID: {stufe, text} | {pruef}} aus anderen Modulen (z.B. ostflanke.spannungsfall_beitrag())."""
+    extern = extern or {}
     res = []
     for ind in katalog["indikatoren"]:
         nw = ind.get("news", {})
@@ -74,11 +77,15 @@ def bewerte(katalog: dict, items: list[dict], hist: list[dict]) -> list[dict]:
             ns = min(4, ns + 1)
         basis = ind["basis"]
         formell = ind.get("formell", False)
-        eff = basis["stufe"] if formell else max(basis["stufe"], ns)
+        ex = extern.get(ind["id"], {})
+        ex_st = 0 if formell else int(ex.get("stufe", 0) or 0)
+        eff = basis["stufe"] if formell else max(basis["stufe"], ns, ex_st)
         pruef = None
         if formell and ns >= 1:
             pruef = f"{n} Meldungen erwähnen '{ind['name']}' - formellen Status manuell prüfen."
-        quelle_stufe = "Basis" if eff == basis["stufe"] else "Meldungen"
+        if ex.get("pruef"):
+            pruef = (pruef + " " if pruef else "") + ex["pruef"]
+        quelle_stufe = "Basis" if eff == basis["stufe"] else "Meldungen" if eff == ns else "Ostflanke"
         res.append({
             "id": ind["id"], "kategorie": ind["kategorie"], "name": ind["name"],
             "gewicht": ind.get("gewicht", 1), "formell": formell,
@@ -91,6 +98,7 @@ def bewerte(katalog: dict, items: list[dict], hist: list[dict]) -> list[dict]:
             "beispiele": [{"titel": t["titel"], "link": t["link"], "quelle": t["quelle"], "zeit": t["zeit"]}
                           for t in treffer[:4]],
             "gesamtstufe_min": ind.get("gesamtstufe_min"),
+            "extern_stufe": ex_st if ex.get("stufe") is not None else None, "extern_text": ex.get("text"),
         })
     return res
 
@@ -134,7 +142,17 @@ def _ereignisse(alt: dict, neu_inds: list[dict], log: list[dict]) -> list[dict]:
     return log[-200:]
 
 
-def update(force: bool = False, news_items: list[dict] | None = None) -> dict:
+def _folgen(inds: list[dict]) -> dict:
+    """Folgen fuer die Bevoelkerung je formellem Ausloeser; 'aktiv' wenn der Ausloeser manuell gesetzt ist (Stufe >= 3)."""
+    f = load_json(FOLGEN_FILE, {})
+    st = {i["id"]: i["stufe"] for i in inds}
+    for s in f.get("stufen", []):
+        s["aktiv"] = any(st.get(a, 0) >= 3 for a in s["ausloeser"])
+    return f
+
+
+def update(force: bool = False, news_items: list[dict] | None = None, extern: dict | None = None) -> dict:
+    """extern: z.B. ostflanke.spannungsfall_beitrag() - Ostflanken-Lage hebt C3/C4/A5 an, D1 nur Pruefhinweis."""
     os.makedirs(DATA_DIR, exist_ok=True)
     alt = load_json(STATE_FILE, {})
     if not force and alt.get("aktualisiert"):
@@ -151,7 +169,13 @@ def update(force: bool = False, news_items: list[dict] | None = None) -> dict:
                 if nw.get("suche"):
                     items.append(dict(it, suchbegriff=nw["suche"][0]))
     hist = alt.get("verlauf", [])
-    inds = bewerte(katalog, items, hist)
+    if extern is None:
+        try:
+            import ostflanke
+            extern = ostflanke.spannungsfall_beitrag()
+        except Exception:  # noqa: BLE001  Modul fehlt oder noch kein Lauf
+            extern = {}
+    inds = bewerte(katalog, items, hist, extern)
     g = gesamt(inds, katalog)
     heute = datetime.now().strftime("%Y-%m-%d")
     hist = push_history(hist, {"datum": heute, "aufruestung": g["aufruestung"], "eskalation": g["eskalation"],
@@ -172,6 +196,7 @@ def update(force: bool = False, news_items: list[dict] | None = None) -> dict:
         **g, "trend_7t": {"aufruestung": trend(hist, "aufruestung"), "eskalation": trend(hist, "eskalation")},
         "indikatoren": inds, "verlauf": hist, "ereignisse": _ereignisse(alt, inds, alt.get("ereignisse", [])),
         "veraltete_bewertungen": [i["id"] for i in inds if i["veraltet"]],
+        "folgen": _folgen(inds),
         "stufen_legende": katalog.get("stufen"), "kategorien_namen": {k: v["name"] for k, v in katalog["kategorien"].items()},
     }
     save_json(STATE_FILE, state)
