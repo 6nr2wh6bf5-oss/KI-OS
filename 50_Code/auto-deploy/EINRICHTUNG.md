@@ -25,7 +25,7 @@ Bei Fehler: automatischer Rollback auf das Backup, derselbe Commit wird nicht er
 2. `bash install.sh schluessel` → öffentlichen Schlüssel als **Read-only Deploy Key** im Repo eintragen (`gh repo deploy-key add key.pub --repo 6nr2wh6bf5-oss/ki-os --title wm-server`).
 3. `/etc/wm-autodeploy.conf` anpassen: Dienstname (`systemctl list-units | grep -i world`), Port der Health-URLs.
 4. `bash install.sh einrichten`
-5. `GIT_SSH_COMMAND="ssh -i /opt/wm-deploy/deploy_key" /opt/wm-deploy/wm-autodeploy.sh --pruefen` → Unterschiede Server vs. `main` prüfen. Hat der Server Anpassungen, die im Repo fehlen: zuerst ins Repo übernehmen.
+5. `/opt/wm-deploy/wm-autodeploy.sh --pruefen` → Unterschiede Server vs. `main` prüfen. Hat der Server Anpassungen, die im Repo fehlen: zuerst ins Repo übernehmen.
 6. `bash install.sh starten --basis`: aktueller `main` gilt als eingespielt; ab dem nächsten Merge werden nur die darin geänderten Dateien übernommen. (Ohne `--basis` spielt der erste Lauf alle Abweichungen ein, nur verwenden, wenn `main` neuer ist als der Server.)
 7. Test: `systemctl start wm-autodeploy.service; journalctl -u wm-autodeploy -n 30`.
 
@@ -41,6 +41,6 @@ Bei Fehler: automatischer Rollback auf das Backup, derselbe Commit wird nicht er
 Rollback ohne PC: Den Merge in GitHub rückgängig machen («Revert» im PR) und den Revert-PR mergen. Der Server spielt den alten Stand dann automatisch ein.
 
 ## Sicherheit
-- Deploy Key nur lesend und nur für dieses Repo; liegt nur auf dem Server (`/opt/wm-deploy/deploy_key`).
+- Server liest das öffentliche Repo nur (HTTPS, keine Zugangsdaten auf dem Server).
 - Server bleibt nur via Tailscale erreichbar; keine eingehende Verbindung nötig (Server holt selbst).
 - Freigabe bleibt beim Nutzer: Nur was auf `main` gemergt ist, wird eingespielt. Claude pusht nie direkt auf `main`.

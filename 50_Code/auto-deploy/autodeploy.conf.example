@@ -5,9 +5,9 @@
 WM_DIR=/opt/world-monitor
 # systemd-Dienst des World Monitor (auf dem Server pruefen: systemctl list-units | grep -i world)
 WM_SERVICE=world-monitor.service
-# Lokaler Klon des Repos (nur lesend, Deploy-Key)
+# Lokaler Klon des Repos (nur lesend; Repo ist oeffentlich, daher HTTPS ohne Anmeldung)
 REPO_DIR=/opt/wm-deploy/repo
-REPO_URL=git@github.com:6nr2wh6bf5-oss/ki-os.git
+REPO_URL=https://github.com/6nr2wh6bf5-oss/KI-OS.git
 BRANCH=main
 # Unterordner im Repo, dessen Dateien eingespielt werden
 SUBDIR=50_Code/world-monitor-erweiterung
