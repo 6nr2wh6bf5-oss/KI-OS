@@ -1,0 +1,25 @@
+# /etc/wm-autodeploy.conf  (auf dem Server, NICHT ins Repo mit echten Werten)
+# Wird von wm-autodeploy.sh als Bash-Datei geladen.
+
+# Zielordner des World Monitor
+WM_DIR=/opt/world-monitor
+# systemd-Dienst des World Monitor (auf dem Server pruefen: systemctl list-units | grep -i world)
+WM_SERVICE=world-monitor.service
+# Lokaler Klon des Repos (nur lesend, Deploy-Key)
+REPO_DIR=/opt/wm-deploy/repo
+REPO_URL=git@github.com:6nr2wh6bf5-oss/ki-os.git
+BRANCH=main
+# Unterordner im Repo, dessen Dateien eingespielt werden
+SUBDIR=50_Code/world-monitor-erweiterung
+# Nur diese Endungen werden kopiert (server.py, index.html, config.json liegen nicht im Repo
+# und werden nie angefasst; zusaetzlich unten ausdruecklich geschuetzt)
+ENDUNGEN="py js json"
+GESCHUETZT="server.py index.html config.json"
+# Gesundheitspruefung nach dem Neustart: URLs, die HTTP 200 liefern muessen (Leerzeichen-getrennt)
+HEALTH_URLS="http://127.0.0.1:8080/api/ostflanke http://127.0.0.1:8080/api/spannungsfall"
+# Sekunden Wartezeit nach dem Neustart, bevor geprueft wird
+HEALTH_WARTEN=45
+# config.json mit ntfy-Kanal (push.ntfy_topic / push.ntfy_server)
+WM_CONFIG=/opt/world-monitor/config.json
+# Anzahl Backups, die behalten werden
+BACKUPS_BEHALTEN=15
