@@ -4,3 +4,7 @@
 
 # Lizenzierte / private Quelldokumente, nur lokal
 _Quellen_lokal/
+
+# Python-Cache
+__pycache__/
+*.pyc
