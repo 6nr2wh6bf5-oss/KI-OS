@@ -6,5 +6,4 @@ After=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/opt/wm-deploy/wm-autodeploy.sh
-Environment=GIT_SSH_COMMAND=ssh -i /opt/wm-deploy/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new
 TimeoutStartSec=300
