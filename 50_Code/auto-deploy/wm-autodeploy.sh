@@ -124,7 +124,14 @@ fi
 
 MSG=$(git -C "$REPO_DIR" log -1 --format=%s "$NEU" | cut -c1-120)
 KURZ=${NEU:0:7}
-mapfile -t DATEIEN < <(geaendert)
+# Nur Dateien, die in den neuen Commits geaendert wurden (schuetzt Server-Anpassungen in
+# unberuehrten Dateien). Ohne bekannten Vorstand: alle abweichenden Dateien.
+if [ -n "$ALT" ] && git -C "$REPO_DIR" cat-file -e "$ALT^{commit}" 2>/dev/null; then
+  BERUEHRT=" $(git -C "$REPO_DIR" diff --name-only "$ALT" "$NEU" -- "$SUBDIR" | xargs -r -n1 basename | tr '\n' ' ') "
+  mapfile -t DATEIEN < <(for n in $(geaendert); do [[ "$BERUEHRT" == *" $n "* ]] && echo "$n"; done)
+else
+  mapfile -t DATEIEN < <(geaendert)
+fi
 
 if [ ${#DATEIEN[@]} -eq 0 ]; then
   log "Neuer Commit $KURZ ohne Aenderung am World Monitor"

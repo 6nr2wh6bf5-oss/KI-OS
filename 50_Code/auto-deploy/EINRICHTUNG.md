@@ -15,7 +15,7 @@ Stand 19.11.2026. Ziel: Updates gelangen auf den Server, ohne dass der PC laufen
 Bei Fehler: automatischer Rollback auf das Backup, derselbe Commit wird nicht erneut versucht. Ein neuer Commit auf `main` wird wieder normal geprüft.
 
 ## Was eingespielt wird
-- Nur Dateien `*.py`, `*.js`, `*.json` direkt in `50_Code/world-monitor-erweiterung/`.
+- Nur Dateien `*.py`, `*.js`, `*.json` direkt in `50_Code/world-monitor-erweiterung/`, und davon nur jene, die in den neu gemergten Commits geändert wurden. Server-Anpassungen in unberührten Dateien bleiben so erhalten.
 - Nie angefasst: `server.py`, `index.html`, `config.json`, Datenordner, Schlüssel.
 - Dateien, die im Repo gelöscht werden, bleiben auf dem Server (bewusst, sicherer).
 - Änderungen an `server.py` oder `index.html` brauchen weiterhin einen manuellen Einbau (PC), solange diese Dateien nicht im Repo liegen.
@@ -26,7 +26,7 @@ Bei Fehler: automatischer Rollback auf das Backup, derselbe Commit wird nicht er
 3. `/etc/wm-autodeploy.conf` anpassen: Dienstname (`systemctl list-units | grep -i world`), Port der Health-URLs.
 4. `bash install.sh einrichten`
 5. `GIT_SSH_COMMAND="ssh -i /opt/wm-deploy/deploy_key" /opt/wm-deploy/wm-autodeploy.sh --pruefen` → Unterschiede Server vs. `main` prüfen. Hat der Server Anpassungen, die im Repo fehlen: zuerst ins Repo übernehmen.
-6. `bash install.sh starten` (spielt beim ersten Lauf die Abweichungen ein) oder `bash install.sh starten --basis` (Server gilt als aktuell).
+6. `bash install.sh starten --basis`: aktueller `main` gilt als eingespielt; ab dem nächsten Merge werden nur die darin geänderten Dateien übernommen. (Ohne `--basis` spielt der erste Lauf alle Abweichungen ein, nur verwenden, wenn `main` neuer ist als der Server.)
 7. Test: `systemctl start wm-autodeploy.service; journalctl -u wm-autodeploy -n 30`.
 
 ## Bedienung
